@@ -1,0 +1,2 @@
+Coloque aqui as fotos definitivas das pecas (ex.: anel-seixo-1.jpg)
+e indique-as no campo "imagens" em js/produtos.js.

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#D9B48F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Símbolo Jusante: rosácea de oito pétalas entrelaçadas com duas margens (quadrados) -->
+  <g transform="translate(50 50)">
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(0)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(45)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(90)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(135)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(180)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(225)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(270)"/>
+    <path d="M0 -44 C 15 -30 15 -14 0 -4 C -15 -14 -15 -30 0 -44Z" transform="rotate(315)"/>
+    <rect x="-24" y="-24" width="48" height="48" rx="9"/>
+    <rect x="-24" y="-24" width="48" height="48" rx="9" transform="rotate(45)"/>
+    <circle r="4.5"/>
+  </g>
+</svg>
