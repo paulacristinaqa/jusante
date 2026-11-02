@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jusante — Jóias inspiradas no Rio Minho</title>
+  <meta name="description" content="Jusante: jóias de autor, exclusivas e em tiragens mínimas, inspiradas no Rio Minho.">
+  <link rel="icon" href="assets/simbolo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div class="aviso">Peças de autor · tiragens de 3 a 9 exemplares · envio gratuito em Portugal</div>
+
+  <header class="topo">
+    <button class="menu-btn" aria-label="Menu" data-acao="menu"><span></span><span></span></button>
+    <nav class="nav nav-esq">
+      <a href="#/loja">Loja</a>
+      <a href="#/colecoes">Coleções</a>
+      <a href="#/atelier" class="so-movel">Atelier</a>
+    </nav>
+    <a href="#/" class="marca" aria-label="Jusante — início">
+      <img src="assets/simbolo.svg" alt="" class="marca-simbolo">
+      <span class="marca-nome">Jusante</span>
+      <span class="marca-sub">Jóias inspiradas no Rio Minho</span>
+    </a>
+    <nav class="nav nav-dir">
+      <a href="#/atelier">Atelier</a>
+      <button class="saco-btn" data-acao="abrir-saco">Saco <span class="saco-n">0</span></button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="rodape">
+    <div class="rodape-marca">
+      <img src="assets/simbolo.svg" alt="" width="54" height="54">
+      <span class="marca-nome">Jusante</span>
+      <span class="marca-sub">Jóias inspiradas no Rio Minho</span>
+    </div>
+    <div class="rodape-cols">
+      <div>
+        <h4>Loja</h4>
+        <a href="#/loja">Todas as peças</a>
+        <a href="#/colecoes">Coleções</a>
+        <a href="#/atelier">Encomendas por medida</a>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <a href="#/atelier">A autora</a>
+        <a href="#/atelier">Processo</a>
+        <a href="#/atelier">Certificado de autenticidade</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <span>Alto Minho, Portugal</span>
+        <span>ola@jusante.pt</span>
+        <span>@jusante.joias</span>
+      </div>
+    </div>
+    <p class="rodape-fim">© <span id="ano"></span> Jusante · Cada peça é numerada, assinada e não volta a ser produzida.</p>
+  </footer>
+
+  <!-- Saco de compras -->
+  <div class="veu" data-acao="fechar-saco"></div>
+  <aside class="saco" aria-label="Saco de compras">
+    <div class="saco-topo">
+      <h3>O seu saco</h3>
+      <button data-acao="fechar-saco" aria-label="Fechar">×</button>
+    </div>
+    <div class="saco-itens"></div>
+    <div class="saco-fim">
+      <div class="saco-total"><span>Total</span><strong>0 €</strong></div>
+      <button class="btn btn-cheio" data-acao="checkout">Finalizar compra</button>
+      <p class="nota">Pré-visualização: o checkout ficará ativo no Shopify.</p>
+    </div>
+  </aside>
+
+  <!-- Barra do modo fotos -->
+  <div class="fotos-barra">
+    <button class="fotos-toggle" data-acao="modo-fotos">✦ Modo fotos</button>
+    <div class="fotos-opcoes">
+      <label>Fundo
+        <select data-opcao="fundo">
+          <option value="creme">Creme</option>
+          <option value="branco">Branco</option>
+          <option value="verde">Verde</option>
+          <option value="areia">Areia</option>
+        </select>
+      </label>
+      <label>Formato
+        <select data-opcao="formato">
+          <option value="1/1">1:1 quadrado</option>
+          <option value="4/5">4:5 retrato</option>
+          <option value="3/4">3:4 retrato</option>
+          <option value="2/3">2:3 retrato</option>
+        </select>
+      </label>
+      <label>Enquadramento
+        <select data-opcao="ajuste">
+          <option value="cover">Preencher</option>
+          <option value="contain">Mostrar inteira</option>
+        </select>
+      </label>
+      <button data-acao="limpar-fotos" class="perigo">Apagar todas</button>
+    </div>
+  </div>
+
+  <div class="toast" role="status"></div>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
