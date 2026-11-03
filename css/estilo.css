@@ -362,3 +362,11 @@ body[data-fundo="areia"]{--fundo-foto:#E8DCC6}
 .opala-pedra-grelha .opala-pedra{grid-template-columns:1fr;gap:28px}
 .opala-pedra-grelha .opala-foto .foto-slot{box-shadow:none;background:var(--verde-escuro)}
 @media (max-width:820px){.opala-pedra-grelha{grid-template-columns:1fr}}
+
+/* nome da marca maior */
+.marca-nome{font-size:clamp(2.9rem,4.2vw,3.8rem);margin-top:0;line-height:.95}
+.marca-simbolo{width:46px;height:46px}
+.marca-sub{margin-top:12px}
+.topo.compacto .marca-nome{font-size:2.5rem}
+.rodape-marca .marca-nome{font-size:clamp(3.4rem,6vw,4.6rem)}
+@media (max-width:820px){.marca-nome{font-size:2.9rem}.marca-simbolo{width:36px;height:36px}}
