@@ -2,6 +2,7 @@
 (() => {
   const P = window.JUSANTE_PRODUTOS;
   const C = window.JUSANTE_COLECOES;
+  const REF = window.JUSANTE_REFERENCIAS || {};
   const app = document.getElementById("app");
   const SIMBOLO = "assets/simbolo.svg";
   const MAX_FOTOS = 6;
@@ -86,7 +87,8 @@
   function fotosDe(chave) {
     if (cache[chave]?.length) return cache[chave];
     const p = porHandle(chave);
-    return (p?.imagens || []).map((url) => ({ url, w: 0, h: 0, ficheiro: true }));
+    if (p?.imagens?.length) return p.imagens.map((url) => ({ url, w: 0, h: 0, ficheiro: true }));
+    return REF[chave] ? [{ url: REF[chave].url, w: 0, h: 0, ref: true }] : [];
   }
 
   /* ---------------- configurações do modo fotos ---------------- */
@@ -115,9 +117,12 @@
     const fotos = fotosDe(chave);
     const f = fotos[idx];
     const f2 = hover && fotos[idx + 1];
-    const imgs = f
+    const vazia = `<div class="foto-vazia"><img src="${SIMBOLO}" alt=""><span>${esc(rotulo || "Foto em breve")}</span></div>`;
+    const imgs = f && f.ref
+      ? `${vazia}<img src="${f.url}" alt="${esc(REF[chave].legenda)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`
+      : f
       ? `<img src="${f.url}" alt="${esc(rotulo)}" loading="lazy">${f2 ? `<img src="${f2.url}" alt="" loading="lazy">` : ""}`
-      : `<div class="foto-vazia"><img src="${SIMBOLO}" alt=""><span>${esc(rotulo || "Foto em breve")}</span></div>`;
+      : vazia;
     const aviso = avisoFoto(f, formato);
     const temTeste = cache[chave]?.length;
     const chip = f && temTeste
@@ -129,6 +134,13 @@
       <span class="foto-aviso ${aviso ? "mostrar" : ""}">${aviso}</span>
       ${f && f.w ? `<span class="foto-info">${f.w}×${f.h}</span>` : ""}
     </div>`;
+  }
+
+  /* crédito obrigatório das imagens de referência (só quando estão a ser usadas) */
+  function credito(chave) {
+    const r = REF[chave];
+    if (!r || cache[chave]?.length) return "";
+    return `<p class="credito">${esc(r.legenda)}. Foto: <a href="${r.fonte}" target="_blank" rel="noopener">${esc(r.autor)}</a>, <a href="${r.licencaUrl}" target="_blank" rel="noopener">${esc(r.licenca)}</a>, via Wikimedia Commons.</p>`;
   }
 
   /* ---------------- componentes ---------------- */
@@ -205,7 +217,7 @@
     const lista = OPALAS().filter((p) => p.disponiveis).slice(0, 3);
     return `<section class="opala-bloco">
       <div class="envolvente opala-grelha">
-        <div class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}</div>
+        <div class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</div>
         <div class="surgir">
           <span class="rotulo">Especialidade da casa</span>
           <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>da Etiópia</em></h2>
@@ -234,7 +246,8 @@
         </div>
       </section>
 
-      <section class="seccao envolvente">
+      <section class="seccao envolvente opala-pedra-grelha">
+        <figure class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</figure>
         <div class="opala-pedra">
           <div class="surgir"><b>i.</b><h4>Origem</h4><p>Opala preciosa de Welo (Wollo), no planalto do norte da Etiópia, formada em depósitos vulcânicos. É uma das descobertas de opala mais importantes das últimas décadas.</p></div>
           <div class="surgir"><b>ii.</b><h4>O padrão favo de mel</h4><p>Pequenas células de cor que se acendem e apagam com o movimento, separadas por finas linhas. É o padrão mais raro e mais procurado na opala etíope.</p></div>

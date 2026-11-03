@@ -212,3 +212,19 @@ window.JUSANTE_COLECOES = [
   { nome: "Seixos", texto: "Formas polidas pelo tempo e pela água. Prata fundida em areia." },
   { nome: "Correntes", texto: "Elos, movimento e ritmo. Peças forjadas uma a uma." }
 ];
+
+/*
+  IMAGENS DE REFERÊNCIA (enquanto não há fotos próprias)
+  Mostradas quando não há foto de teste nem foto em "fotos/".
+  A licença CC BY obriga a manter o crédito visível.
+*/
+window.JUSANTE_REFERENCIAS = {
+  "opala:destaque": {
+    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Precious_opal_(Delanta_District,_South_Wello,_Ethiopia)_3_(29719697721).jpg?width=1600",
+    legenda: "Opala preciosa de Welo (Etiópia), imagem de referência",
+    autor: "James St. John",
+    licenca: "CC BY 2.0",
+    licencaUrl: "https://creativecommons.org/licenses/by/2.0/",
+    fonte: "https://commons.wikimedia.org/wiki/File:Precious_opal_(Delanta_District,_South_Wello,_Ethiopia)_3_(29719697721).jpg"
+  }
+};
