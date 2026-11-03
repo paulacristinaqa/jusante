@@ -166,48 +166,95 @@
   }
 
   /* ---------------- páginas ---------------- */
+  /* Estrutura da home segundo o Brand Bible (9.1):
+     hero · manifesto · coleções · gesto artesanal · frase de respiro · Atlas · newsletter */
+  const LINHA = `<svg class="marca-linha" viewBox="0 0 160 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M2 9 H58 C66 9, 68 4, 74 4 C78 4, 79 7, 77.5 9"/><path d="M83 9 C 86 12, 92 11, 96 9 H158"/></svg>`;
+
   function paginaInicio() {
     const destaque = P.filter((p) => aVenda(p) && !p.especialidade).slice(0, 4);
     return `
     <section class="hero">
       <div class="hero-texto">
-        <span class="rotulo">Jóias de autor · Alto Minho</span>
-        <h1>Peças que seguem <em>a corrente</em><br>e nunca se repetem.</h1>
-        <p>Cada jóia Jusante nasce de uma margem, de um seixo, de uma manhã de nevoeiro no Rio Minho. Esculpida à mão livre, com lâminas e ferramentas de escultura, sem moldes. As coleções repetem-se; as peças, nunca.</p>
-        <div class="hero-acoes"><a class="btn" href="#/loja">Ver as peças</a><a class="btn" href="#/atelier" style="border-color:transparent">O atelier →</a></div>
+        <span class="rotulo">Rio Minho / Miño · Portugal e Galiza</span>
+        <h1>Peças que guardam <em>movimento, memória</em> e caminho.</h1>
+        <p>Nascidas da observação do Rio Minho / Miño e do encontro entre Portugal e a Galiza. Esculpidas à mão livre em cerâmica plástica, sem moldes: as coleções repetem-se, as peças nunca.</p>
+        <div class="hero-acoes"><a class="btn" href="#/loja">Ver as peças</a><a class="btn" href="#/atelier" style="border-color:transparent">Da matéria à forma →</a></div>
       </div>
       <div class="hero-imagem">${slot("hero", { rotulo: "Imagem principal", hover: false, formato: "auto" })}
-        <span class="hero-numero">Coleção Foz</span></div>
+        <span class="hero-numero">Coleção Poente</span></div>
       <img class="hero-ornamento" src="${SIMBOLO}" alt="">
     </section>
 
     <section class="manifesto surgir">
       <img class="divisor" src="${SIMBOLO}" alt="">
-      <p>Não há moldes nem cortadores. Cada peça é esculpida <em>à mão livre</em> — como o rio, que corre sempre no mesmo leito, mas nunca com a mesma água.</p>
-      <div class="numeros">
-        <div><strong>1/1</strong><span>Cada peça é única</span></div>
-        <div><strong>0</strong><span>Moldes</span></div>
-        <div><strong>1</strong><span>Autora, uma assinatura</span></div>
-      </div>
+      <p class="manifesto-versos"><span>O rio que segue.</span><span>A luz que transforma.</span><span>A natureza que ensina.</span></p>
+      <p class="nome-def"><strong>Jusante</strong> é a direção do curso da água: o movimento que segue, desce, transforma e encontra novos lugares.</p>
     </section>
 
-    <div class="envolvente">${ondas}</div>
+    ${blocoAssinatura()}
 
     <section class="seccao envolvente">
-      <div class="seccao-cab"><div><span class="rotulo">Coleções</span><h2 class="titulo">Três troços do <em>mesmo rio</em></h2></div><a class="btn" href="#/colecoes">Todas as coleções</a></div>
+      <div class="seccao-cab"><div><span class="rotulo">Coleções</span><h2 class="titulo">Poente, Corrente, <em>Margem</em></h2></div><a class="btn" href="#/colecoes">Ver coleções</a></div>
       ${blocoColecoes()}
     </section>
 
-    ${blocoOpala()}
-
-    <section class="seccao envolvente">
-      <div class="seccao-cab"><div><span class="rotulo">Ainda disponíveis</span><h2 class="titulo">Peças da <em>estação</em></h2></div><a class="btn" href="#/loja">Ver todas</a></div>
+    <section class="seccao envolvente" style="padding-top:0">
+      <div class="seccao-cab"><div><span class="rotulo">Peças em percurso</span><h2 class="titulo">Disponíveis <em>agora</em></h2></div><a class="btn" href="#/loja">Todas as peças</a></div>
       <div class="grelha">${destaque.map(cartao).join("")}</div>
     </section>
 
     ${blocoAtelier()}
-    <section class="seccao envolvente">${blocoCertificado()}</section>
+    ${blocoRespiro()}
+    ${blocoOpala()}
+    ${blocoAtlasTeaser()}
     ${blocoNewsletter()}`;
+  }
+
+  /* a assinatura formal (Brand Bible, 4) */
+  function blocoAssinatura() {
+    const ico = [
+      `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M54 14 A28 28 0 0 0 54 66"/><path d="M66 22 A20 20 0 0 1 66 58"/></svg>`,
+      `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 40 H50 C56 40, 57 33, 60 33"/><path d="M64 46 C 68 48, 74 40, 100 40"/></svg>`,
+      `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="46" cy="40" r="20"/><path d="M70 28 C 86 26, 96 44, 80 56 C 74 60, 68 54, 70 48"/></svg>`
+    ];
+    return `<section class="assinatura-seccao">
+      <div class="envolvente">
+        <div class="assinatura-cab surgir">
+          <span class="rotulo ouro">A assinatura</span>
+          <h2 class="titulo" style="margin-top:12px">Duas partes. <em>Uma fenda.</em></h2>
+          <p>Cada peça Jusante nasce de duas formas que diferem, mas pertencem uma à outra, separadas por uma abertura: a fenda do rio.</p>
+        </div>
+        <div class="regras">
+          <div class="regra surgir">${ico[0]}<h4>Duas partes</h4><p>Duas formas, volumes, superfícies ou semicírculos em diálogo.</p></div>
+          <div class="regra surgir">${ico[1]}<h4>A fenda do rio</h4><p>Uma divisão: abertura, intervalo, linha negativa ou mudança de matéria.</p></div>
+          <div class="regra surgir">${ico[2]}<h4>Sem simetria</h4><p>As partes não são espelhadas. Diferem, como as duas margens do mesmo rio.</p></div>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  function blocoRespiro() {
+    return `<section class="respiro">
+      <div class="surgir">
+        <h2>Duas margens. <em>Uma corrente.</em></h2>
+        <p>A natureza inspira. A arte interpreta. A alma contempla.</p>
+        ${LINHA}
+      </div>
+    </section>`;
+  }
+
+  function blocoAtlasTeaser() {
+    return `<section class="seccao envolvente">
+      <div class="atlas-teaser">
+        <div class="surgir">${slot("atlas:capa", { rotulo: "Foto do rio (sua)", hover: false, formato: "4/3", modo: "substituir" })}</div>
+        <div class="surgir">
+          <span class="rotulo ouro">Atlas da Jusante</span>
+          <h2 class="titulo" style="margin-top:12px">Lugares que <em>inspiram</em></h2>
+          <p>Caminhos à beira do rio, onde o tempo parece desacelerar e a natureza deixa pequenos sinais para quem sabe observar. Um diário de campo ao longo do Minho / Miño, nas duas margens.</p>
+          <a class="btn" href="#/atlas" style="margin-top:26px">Abrir o Atlas</a>
+        </div>
+      </div>
+    </section>`;
   }
 
   /* ---------------- especialidade: opala ---------------- */
@@ -221,7 +268,7 @@
           <span class="rotulo">Especialidade da casa</span>
           <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>réplicas em cerâmica plástica</em></h2>
           <p>A inspiração é uma pedra que bebe água: a opala de Welo, no norte da Etiópia, absorve a humidade e muda de aspeto com ela, quase como um rio. O seu padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro destas opalas.</p>
-          <p>Nesta coleção não uso opala verdadeira: as peças levam <strong>réplicas em cerâmica plástica</strong>, feitas por mim à mão, camada a camada, até a cor ganhar a profundidade e os alvéolos da pedra. Cada efeito sai diferente, por isso todas as peças são únicas.</p>
+          <p>Nesta coleção não uso opala verdadeira: as peças levam <strong>réplicas em cerâmica plástica</strong>, feitas por mim à mão, camada a camada, até a cor ganhar a profundidade e os alvéolos da pedra. Cada efeito sai diferente, por isso todas as peças são únicas. Em algumas, a réplica aparece pela fenda, a assinatura da Jusante.</p>
           <div class="opala-factos">
             <div><b>Welo</b><span>Inspiração, Etiópia</span></div>
             <div><b>Réplicas</b><span>Em cerâmica plástica</span></div>
@@ -255,7 +302,7 @@
       </section>
 
       <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
-        <div class="seccao-cab"><div><span class="rotulo ouro">Réplicas únicas em cerâmica plástica</span><h2 class="titulo">Cada réplica, <em>uma só jóia</em></h2></div></div>
+        <div class="seccao-cab"><div><span class="rotulo ouro">Réplicas únicas em cerâmica plástica</span><h2 class="titulo">Cada réplica, <em>uma só joia</em></h2></div></div>
         <div class="grelha">${lista.map(cartao).join("")}</div>
       </section>
 
@@ -267,11 +314,11 @@
             <p>A cerâmica plástica é leve e resistente, mas o acabamento que imita a opala merece alguns cuidados para manter o brilho.</p>
           </div>
           <ul class="detalhes">
-            <li>Tire a jóia antes de tomar banho, nadar ou fazer desporto.</li>
+            <li>Tire a joia antes de tomar banho, nadar ou fazer desporto.</li>
             <li>Evite perfumes, álcool, acetona e produtos de limpeza: podem tirar o brilho ao acabamento.</li>
             <li>Não deixe a peça ao sol forte nem junto de fontes de calor, como o tablier do carro.</li>
             <li>Limpe só com um pano macio, seco ou ligeiramente húmido.</li>
-            <li>Guarde-a na bolsa de linho, separada de outras jóias, para não riscar.</li>
+            <li>Guarde-a na bolsa de linho, separada de outras joias, para não riscar.</li>
           </ul>
         </div>
       </section>
@@ -300,21 +347,20 @@
     return `<section class="atelier seccao">
       <div class="envolvente">
         <div class="atelier-grelha">
-          <div class="surgir">${slot("atelier", { rotulo: "Retrato da autora / bancada", hover: false, formato: "4/5", modo: "substituir" })}</div>
+          <div class="surgir">${slot("atelier", { rotulo: "As suas mãos, as ferramentas, a bancada", hover: false, formato: "4/5", modo: "substituir" })}</div>
           <div class="surgir">
-            <span class="rotulo">O atelier</span>
-            <h2 class="titulo" style="margin-top:14px">Um trabalho <em>autoral</em>,<br>peça a peça.</h2>
-            <p>Jusante é o atelier de uma só artesã, instalado junto ao Rio Minho. Cada desenho começa num caderno de campo — um seixo, a linha de uma margem, o reflexo da ponte ao fim da tarde — e termina na bancada, entre o aço, a cerâmica plástica e as ferramentas.</p>
-            <p>Não há produção em série nem moldes. Cada peça é esculpida à mão livre, com lâminas e ferramentas de escultura. As coleções e as inspirações repetem-se, mas nenhuma peça sai igual a outra.</p>
-            ${completo ? `<p>Aceitamos um número muito limitado de encomendas por medida por ano — presentes, peças a pares e variações de cor das peças da loja. Escreva-nos para <span style="color:var(--ouro)">ola@jusante.pt</span>.</p>` : ""}
-            <span class="assinatura">Jusante</span>
+            <span class="rotulo">O gesto artesanal</span>
+            <h2 class="titulo" style="margin-top:14px">Da matéria à forma. <em>Do desenho à joia.</em></h2>
+            <p>Cada peça começa num caderno de campo: uma pedra, a linha de uma margem, a luz ao fim da tarde. Depois é esculpida à mão livre em cerâmica plástica, com lâminas e ferramentas de escultura. Sem moldes e sem cortadores.</p>
+            <p>As coleções e as inspirações repetem-se, mas nenhuma peça sai igual a outra. A matéria guarda o gesto: pequenas diferenças de textura, de cor e de forma fazem parte de cada peça.</p>
+            ${completo ? `<p>Aceito um número muito limitado de encomendas por medida: presentes, peças a pares e variações de cor das peças da loja. Escreva para <span style="color:var(--ouro)">ola@jusante.pt</span>.</p>` : ""}
           </div>
         </div>
         <div class="processo">
-          <div><b>i.</b><h4>Recolha</h4><p>Formas, texturas e cores recolhidas ao longo do rio, de Melgaço à foz.</p></div>
-          <div><b>ii.</b><h4>Escultura</h4><p>À mão livre, com lâminas e ferramentas de escultura. Sem moldes nem cortadores: a forma nasce na hora.</p></div>
-          <div><b>iii.</b><h4>Bancada</h4><p>Montagem e acabamento à mão em aço inoxidável e aço cirúrgico, metais resistentes que não escurecem.</p></div>
-          <div><b>iv.</b><h4>Assinatura</h4><p>Cada peça é fotografada e assinada pela autora, e segue com certificado de autenticidade.</p></div>
+          <div><b>i.</b><h4>Observação</h4><p>Cores, matérias e formas recolhidas nas duas margens do Minho / Miño.</p></div>
+          <div><b>ii.</b><h4>Escultura</h4><p>À mão livre, com lâminas e ferramentas de escultura. A forma nasce na hora.</p></div>
+          <div><b>iii.</b><h4>Montagem</h4><p>Acabamento à mão e montagem em aço inoxidável e aço cirúrgico, que não escurecem.</p></div>
+          <div><b>iv.</b><h4>Assinatura</h4><p>Cada peça é fotografada e assinada, e segue com certificado de autenticidade.</p></div>
         </div>
       </div>
     </section>`;
@@ -334,12 +380,43 @@
   function blocoNewsletter() {
     return `<section class="newsletter seccao">
       <div class="envolvente surgir">
-        <span class="rotulo ouro">Lista de espera</span>
-        <h2 class="titulo" style="margin-top:12px">Veja primeiro as <em>peças novas</em></h2>
-        <p>Como cada peça é única, quando é vendida não volta. Quem está na lista vê as peças novas 48 horas antes da loja.</p>
-        <form data-acao="newsletter"><input type="email" placeholder="O seu email" required><button>Inscrever</button></form>
+        <span class="rotulo ouro">Acompanhe o curso</span>
+        <h2 class="titulo" style="margin-top:12px">Novas peças, histórias e <em>pequenos fragmentos</em> da natureza.</h2>
+        <p>Como cada peça é única, quando é vendida não volta. Quem acompanha o curso vê as peças novas 48 horas antes da loja.</p>
+        <form data-acao="newsletter"><input type="email" placeholder="O seu email" required><button>Acompanhar</button></form>
       </div>
     </section>`;
+  }
+
+  /* Atlas da Jusante: diário de campo (Brand Bible 3.4 e 8.3).
+     Regra de rigor: não apresentar "os afluentes" como inventário científico. */
+  function paginaAtlas() {
+    const caps = [1, 2, 3].map((n) => `<article class="capitulo surgir">
+        ${slot("atlas:" + n, { rotulo: "Foto do lugar (sua)", hover: false, formato: "4/5", modo: "substituir" })}
+        <small>Capítulo ${["I", "II", "III"][n - 1]}</small>
+        <h3>Em preparação</h3>
+        <p>Lugar, estação, cores observadas, matérias encontradas e as peças que nasceram daqui.</p>
+      </article>`).join("");
+    return `<section class="loja-cab">
+        <img class="divisor" src="${SIMBOLO}" alt="">
+        <span class="rotulo ouro">Atlas da Jusante</span>
+        <h1 class="titulo" style="margin-top:10px">Lugares que <em>inspiram</em></h1>
+        <p>Um diário de campo ao longo do Rio Minho / Miño: da nascente na Galiza à foz atlântica, passando pelo troço onde as duas margens se encontram.</p>
+      </section>
+      <section class="seccao envolvente" style="padding-top:20px">
+        <div class="margens surgir">
+          <div class="lado"><span class="rotulo ouro">Margem portuguesa</span><h3>Minho</h3><p>Luz, granito, socalcos e pequenas vilas debruçadas sobre a água.</p></div>
+          <div class="fenda" aria-hidden="true"></div>
+          <div class="lado"><span class="rotulo ouro">Margem galega</span><h3>Miño</h3><p>Musgo, sombra, folhas verdes e a outra metade da mesma paisagem.</p></div>
+        </div>
+        <p class="rotulo" style="text-align:center;margin-top:40px;color:var(--cinza)">Duas margens. Uma corrente.</p>
+      </section>
+      <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
+        <div class="seccao-cab"><div><span class="rotulo ouro">Capítulos</span><h2 class="titulo">O <em>diário</em> do rio</h2></div></div>
+        <div class="atlas-capitulos">${caps}</div>
+        <p class="atlas-nota" style="margin-top:40px">Os capítulos do Atlas são uma seleção editorial de lugares e afluentes que inspiram a Jusante, e não um inventário geográfico completo do rio.</p>
+      </section>
+      ${blocoNewsletter()}`;
   }
 
   function paginaLoja(filtro) {
@@ -362,12 +439,12 @@
       const c = C.find((x) => x.nome === nome);
       const lista = P.filter((p) => p.colecao === nome);
       return `<section class="loja-cab"><img class="divisor" src="${SIMBOLO}" alt=""><span class="rotulo ouro">Coleção</span>
-        <h1 class="marca-nome" style="font-size:clamp(3.4rem,7vw,5.5rem);color:var(--verde);display:block;margin-top:6px">${esc(nome)}</h1>
+        <h1 class="colecao-titulo">${esc(nome)}</h1>
         <p>${esc(c?.texto || "")}</p></section>
         <div class="envolvente"><div class="grelha" style="padding-bottom:110px">${lista.map(cartao).join("")}</div></div>`;
     }
     return `<section class="loja-cab"><img class="divisor" src="${SIMBOLO}" alt=""><h1 class="titulo">As <em>coleções</em></h1>
-      <p>Cada coleção corresponde a um troço do Rio Minho — e a um modo diferente de trabalhar o metal.</p></section>
+      <p>Três coleções permanentes, três maneiras de olhar o mesmo rio. As peças de cada coleção partilham a paleta e a inspiração, mas nenhuma é igual a outra.</p></section>
       <section class="envolvente" style="padding-bottom:110px">${blocoColecoes()}</section>`;
   }
 
@@ -413,7 +490,7 @@
             <p class="ficha-nota">Réplica: esta peça não contém opala natural.</p>
             <a href="#/opala" class="ficha-link">Cuidados com a peça →</a></div>` : ""}
           <ul class="detalhes">${p.detalhes.map((d) => `<li>${esc(d)}</li>`).join("")}<li>${esc(p.material)}</li></ul>
-          <div class="garantias"><span>✦ Feito à mão no Alto Minho</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.efeito ? `<span>✦ Réplica de opala feita à mão</span>` : ""}</div>
+          <div class="garantias"><span>✦ Esculpida à mão livre</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.efeito ? `<span>✦ Réplica de opala feita à mão</span>` : ""}</div>
         </div>
       </section>
     </div>
@@ -439,6 +516,7 @@
     else if (r === "p") html = paginaProduto(arg);
     else if (r === "atelier") html = paginaAtelier();
     else if (r === "opala") html = paginaOpala();
+    else if (r === "atlas") html = paginaAtlas();
     else html = paginaInicio();
     const y = scrollY;
     app.innerHTML = html;

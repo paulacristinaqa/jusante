@@ -2,135 +2,164 @@
   CATÁLOGO JUSANTE
   ----------------------------------------------------------------
   Estrutura pensada para migrar para o Shopify (handle, title, body_html,
-  vendor, product_type, tags, variants, images).
+  product_type, tags, images).
 
-  FOTOS: há duas formas de testar fotos:
-   1) No site, ative o "Modo fotos" (botão no canto inferior) e arraste
-      as fotos para cada peça. Ficam guardadas só no seu navegador.
-   2) Coloque os ficheiros na pasta /fotos e escreva os caminhos em
-      "imagens", ex.: imagens: ["fotos/anel-seixo-1.jpg", "fotos/anel-seixo-2.jpg"]
-      (é assim que ficam visíveis no GitHub Pages para qualquer dispositivo).
+  COLEÇÕES PERMANENTES (Brand Bible, 5.2): Poente, Corrente, Margem.
+  ESPECIALIDADE: Opala favo de mel (réplicas em cerâmica plástica).
 
-  MATERIAIS: aço inoxidável e aço cirúrgico (brincos em aço cirúrgico).
   PEÇAS ÚNICAS: cada peça é esculpida à mão livre e nunca sai igual.
   Cada entrada é UMA peça, com as fotos dessa peça exata.
   "vendida": false = à venda; true = vendida (fica visível como arquivo).
   "tamanho": tamanho desta peça (anéis/pulseiras), ou "" se não se aplica.
   Para uma peça nova da mesma coleção, copie uma entrada e mude o "handle".
+
+  DESCRIÇÕES (Brand Bible, 9.3): forma + matéria + território + sensação.
+  Evitar "lindo", "super delicado", "exclusivo" sem prova.
+
+  FOTOS: há duas formas de testar fotos:
+   1) No site, ative o "Modo fotos" (botão no canto inferior) e arraste
+      as fotos para cada peça. Ficam guardadas só no seu navegador.
+   2) Coloque os ficheiros na pasta /fotos e escreva os caminhos em
+      "imagens", ex.: imagens: ["fotos/brincos-luz-baixa-1.jpg"]
+      (é assim que ficam visíveis no GitHub Pages para qualquer dispositivo).
+
+  MATERIAIS: cerâmica plástica esculpida à mão + aço inoxidável / aço
+  cirúrgico (brincos em aço cirúrgico).
+  Nomes, preços e medidas abaixo são EXEMPLOS: substitua pelos reais.
 */
 window.JUSANTE_PRODUTOS = [
+  /* ---------- POENTE ---------- */
   {
-    handle: "anel-seixo",
-    titulo: "Anel Seixo",
-    colecao: "Seixos",
-    tipo: "Anéis",
-    preco: 145,
-    material: "Aço inoxidável",
+    handle: "brincos-luz-baixa",
+    titulo: "Brincos Luz Baixa",
+    colecao: "Poente",
+    tipo: "Brincos",
+    preco: 68,
+    material: "Cerâmica plástica e aço cirúrgico dourado",
     vendida: false,
     descricao:
-      "Desenhado a partir de um seixo recolhido na margem de Vila Nova de Cerveira. A forma arredondada e a superfície acetinada lembram a pedra polida pela água.",
-    detalhes: ["Aço inoxidável", "Acabamento acetinado à mão", "Não escurece com o uso"],
+      "Duas formas orgânicas em diálogo, separadas pela fenda central. Inspirados na luz de fim de tarde sobre as pedras da margem, combinam cerâmica plástica em âmbar e terra rosada com aço cirúrgico dourado. Um lado é maior do que o outro: diferem, mas pertencem um ao outro.",
+    detalhes: ["Esculpidos à mão livre", "Duas partes assimétricas", "Aço cirúrgico dourado", "Comprimento 3,5 cm"],
+    tamanho: "",
+    imagens: []
+  },
+  {
+    handle: "anel-pedra-quente",
+    titulo: "Anel Pedra Quente",
+    colecao: "Poente",
+    tipo: "Anéis",
+    preco: 72,
+    material: "Cerâmica plástica e aço inoxidável",
+    vendida: false,
+    descricao:
+      "Um volume arredondado aberto por uma fenda, que deixa ver uma segunda textura, mais rugosa, em terracota. Inspirado nas pedras que guardam o calor do sol depois do poente.",
+    detalhes: ["Esculpido à mão livre", "Fenda que revela uma segunda textura", "Base em aço inoxidável"],
     tamanho: "14",
     imagens: []
   },
   {
-    handle: "brincos-foz",
-    titulo: "Brincos Foz",
-    colecao: "Foz",
-    tipo: "Brincos",
-    preco: 128,
-    material: "Aço cirúrgico dourado",
-    vendida: false,
-    descricao:
-      "O desenho nasce do ponto onde o Minho encontra o Atlântico, entre Caminha e A Guarda: duas linhas que se abrem e nunca voltam a fechar.",
-    detalhes: ["Aço cirúrgico", "Acabamento dourado", "Fecho de pressão", "Comprimento 3,2 cm"],
-    tamanho: "",
-    imagens: []
-  },
-  {
-    handle: "colar-corrente",
-    titulo: "Colar Corrente",
-    colecao: "Correntes",
+    handle: "pendente-fim-de-tarde",
+    titulo: "Pendente Fim de Tarde",
+    colecao: "Poente",
     tipo: "Colares",
-    preco: 210,
-    material: "Aço inoxidável",
+    preco: 84,
+    material: "Cerâmica plástica e aço inoxidável dourado",
+    vendida: true,
+    descricao:
+      "Pingente bipartido: duas meias-luas de tamanhos diferentes, separadas por um intervalo onde passa a luz. Em tons de âmbar e rosado seco.",
+    detalhes: ["Esculpido à mão livre", "Pingente em duas partes", "Corrente 45 cm em aço inoxidável dourado"],
+    tamanho: "",
+    imagens: []
+  },
+
+  /* ---------- CORRENTE ---------- */
+  {
+    handle: "brincos-remanso",
+    titulo: "Brincos Remanso",
+    colecao: "Corrente",
+    tipo: "Brincos",
+    preco: 64,
+    material: "Cerâmica plástica e aço cirúrgico",
     vendida: false,
     descricao:
-      "Elos de tamanhos irregulares, escolhidos e montados um a um, como a água a ganhar velocidade depois das pesqueiras de Melgaço.",
-    detalhes: ["Aço inoxidável", "Elos montados à mão", "Comprimento 45 cm", "Fecho de mosquetão"],
+      "Um brinco liso, como a água parada no remanso; o outro com sulcos finos, como a correnteza ao centro do rio. Em verde de rio e azul acinzentado, com aço cirúrgico.",
+    detalhes: ["Esculpidos à mão livre", "Par assimétrico: calmaria e correnteza", "Aço cirúrgico", "Comprimento 3 cm"],
     tamanho: "",
     imagens: []
   },
   {
-    handle: "pulseira-margem",
-    titulo: "Pulseira Margem",
-    colecao: "Correntes",
-    tipo: "Pulseiras",
-    preco: 165,
-    material: "Aço inoxidável prateado e dourado",
+    handle: "colar-correnteza",
+    titulo: "Colar Correnteza",
+    colecao: "Corrente",
+    tipo: "Colares",
+    preco: 92,
+    material: "Cerâmica plástica, pérola de água doce e aço inoxidável",
     vendida: false,
     descricao:
-      "Duas margens, dois tons. Uma fita de aço prateado com um único ponto dourado: a ponte entre Valença e Tui.",
-    detalhes: ["Aço inoxidável", "Dois tons: prateado e dourado", "Abertura ajustável", "Largura 6 mm"],
-    tamanho: "M",
+      "Uma forma alongada e curva, cortada por uma linha negativa, com uma pérola de água doce suspensa no intervalo. Inspirado no movimento da água a contornar uma pedra.",
+    detalhes: ["Esculpido à mão livre", "Pérola barroca de água doce", "Corrente 42 + 3 cm em aço inoxidável"],
+    tamanho: "",
     imagens: []
   },
   {
-    handle: "anel-insua",
-    titulo: "Anel Ínsua",
-    colecao: "Foz",
-    tipo: "Anéis",
-    preco: 240,
-    material: "Aço inoxidável dourado",
+    handle: "argolas-reflexo",
+    titulo: "Argolas Reflexo",
+    colecao: "Corrente",
+    tipo: "Brincos",
+    preco: 58,
+    material: "Cerâmica plástica translúcida e aço cirúrgico",
     vendida: false,
     descricao:
-      "Inspirado nas ínsuas, as pequenas ilhas de areia e salgueiros que o rio desenha e apaga. Uma forma orgânica e aberta, que se ajusta ao dedo.",
-    detalhes: ["Aço inoxidável", "Acabamento dourado", "Peça assinada"],
+      "Argolas em aço com uma pequena forma em cerâmica plástica translúcida, em azul muito suave. Cada lado tem uma forma diferente, como dois reflexos da mesma margem.",
+    detalhes: ["Esculpidas à mão livre", "Cerâmica plástica translúcida", "Argola em aço cirúrgico, 2 cm"],
+    tamanho: "",
+    imagens: []
+  },
+
+  /* ---------- MARGEM ---------- */
+  {
+    handle: "anel-granito",
+    titulo: "Anel Granito",
+    colecao: "Margem",
+    tipo: "Anéis",
+    preco: 70,
+    material: "Cerâmica plástica e aço inoxidável",
+    vendida: false,
+    descricao:
+      "Duas massas encostadas, uma lisa e outra granulada, separadas por uma fenda estreita. Inspirado no granito molhado das margens, em cinza mineral e branco quente.",
+    detalhes: ["Esculpido à mão livre", "Duas texturas: lisa e granulada", "Base em aço inoxidável"],
     tamanho: "15",
     imagens: []
   },
   {
-    handle: "brincos-nevoeiro",
-    titulo: "Brincos Nevoeiro",
-    colecao: "Seixos",
-    tipo: "Brincos",
-    preco: 118,
-    material: "Aço cirúrgico e pérola de água doce",
+    handle: "pulseira-abrigo",
+    titulo: "Pulseira Abrigo",
+    colecao: "Margem",
+    tipo: "Pulseiras",
+    preco: 88,
+    material: "Cerâmica plástica e aço inoxidável",
     vendida: false,
     descricao:
-      "Para as manhãs em que o rio desaparece debaixo do nevoeiro. Uma pérola barroca suspensa numa gota de aço fosco.",
-    detalhes: ["Aço cirúrgico", "Pérola barroca de água doce", "Cada pérola é única", "Comprimento 2,8 cm"],
-    tamanho: "",
+      "Metade lisa, metade texturizada: a calmaria da margem e a correnteza ao lado. Em areia e verde sálvia, com fecho em aço inoxidável.",
+    detalhes: ["Esculpida à mão livre", "Metade lisa / metade texturizada", "Fecho em aço inoxidável"],
+    tamanho: "M",
     imagens: []
   },
   {
-    handle: "colar-meandro",
-    titulo: "Colar Meandro",
-    colecao: "Correntes",
-    tipo: "Colares",
-    preco: 185,
-    material: "Aço inoxidável dourado",
-    vendida: true,
-    descricao:
-      "Um pendente desenhado sobre o mapa do rio entre Monção e Valença, recortado e acabado à mão.",
-    detalhes: ["Aço inoxidável", "Acabamento dourado", "Corrente 42 + 3 cm", "Pendente 2,4 cm"],
-    tamanho: "",
-    imagens: []
-  },
-  {
-    handle: "argolas-mare",
-    titulo: "Argolas Maré",
-    colecao: "Foz",
+    handle: "brincos-musgo",
+    titulo: "Brincos Musgo",
+    colecao: "Margem",
     tipo: "Brincos",
-    preco: 98,
-    material: "Aço cirúrgico",
+    preco: 62,
+    material: "Cerâmica plástica e aço cirúrgico",
     vendida: false,
     descricao:
-      "Argolas de espessura variável, como o nível da água na foz ao longo do dia. Leves, para usar sempre.",
-    detalhes: ["Aço cirúrgico", "Polimento espelhado", "Diâmetro 2 cm", "Fecho de dobradiça"],
+      "Duas pequenas formas de contorno irregular, com uma granulação feita ponto a ponto, em verde baixo e sombra húmida. Uma é mais escura do que a outra, como os dois lados de uma pedra à beira do rio.",
+    detalhes: ["Esculpidos à mão livre", "Textura granulada feita à mão", "Aço cirúrgico", "Comprimento 2,2 cm"],
     tamanho: "",
     imagens: []
   },
+
   /* ---------- ESPECIALIDADE: OPALA FAVO DE MEL DA ETIÓPIA ----------
      IMPORTANTE: estas peças NÃO têm opala natural. São feitas à mão em
      cerâmica plástica: são réplicas visuais da opala favo de mel.
@@ -145,8 +174,8 @@ window.JUSANTE_PRODUTOS = [
     material: "Aço inoxidável e réplica de opala em cerâmica plástica",
     vendida: false,
     descricao:
-      "Um cabochão oval em cerâmica plástica, modelado à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz. A base em aço foi escolhida à medida deste cabochão.",
-    detalhes: ["Aço inoxidável", "Base com garras"],
+      "Um anel com fenda, que deixa ver uma réplica de opala em cerâmica plástica, modelada à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz.",
+    detalhes: ["Aço inoxidável", "Fenda que revela a réplica de opala"],
     tamanho: "13",
     efeito: { padrao: "Favo de mel", tons: "Verde, laranja e azul", forma: "Cabochão oval", medidas: "10 × 8 mm" },
     imagens: []
@@ -201,10 +230,11 @@ window.JUSANTE_PRODUTOS = [
   }
 ];
 
+/* Coleções permanentes iniciais (Brand Bible, 5.2) */
 window.JUSANTE_COLECOES = [
-  { nome: "Foz", texto: "Onde o rio se entrega ao mar. Linhas abertas e luz." },
-  { nome: "Seixos", texto: "Formas polidas pelo tempo e pela água. Texturas suaves e orgânicas." },
-  { nome: "Correntes", texto: "Elos, movimento e ritmo. Peças montadas uma a uma." }
+  { nome: "Poente", texto: "Luz baixa e pedras quentes. Âmbar, rosado, terracota e dourado suave." },
+  { nome: "Corrente", texto: "Fluxo e transparência. Verde de rio, azul acinzentado, pérola e linhas alongadas." },
+  { nome: "Margem", texto: "Abrigo, terra e musgo. Areia, raiz, granito e superfícies táteis." }
 ];
 
 /*

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jusante — Jóias inspiradas no Rio Minho</title>
-  <meta name="description" content="Jusante: jóias de autor esculpidas à mão livre, peças únicas inspiradas no Rio Minho.">
+  <title>Jusante — Joias autorais inspiradas pela natureza</title>
+  <meta name="description" content="Jusante: joias autorais inspiradas no Rio Minho / Miño e no encontro entre Portugal e Galiza. Peças únicas, esculpidas à mão livre.">
   <link rel="icon" href="assets/simbolo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-  <div class="aviso">Esculpidas à mão livre · cada peça é única · envio gratuito em Portugal</div>
+  <div class="aviso">Joias autorais<span class="so-desktop"> · cada peça é única, esculpida à mão livre</span> · envio gratuito em Portugal</div>
 
   <header class="topo">
     <button class="menu-btn" aria-label="Menu" data-acao="menu"><span></span><span></span></button>
@@ -17,14 +17,16 @@
       <a href="#/loja">Loja</a>
       <a href="#/colecoes">Coleções</a>
       <a href="#/opala">Opala</a>
+      <a href="#/atlas" class="so-movel">Atlas</a>
       <a href="#/atelier" class="so-movel">Atelier</a>
     </nav>
     <a href="#/" class="marca" aria-label="Jusante — início">
-      <img src="assets/simbolo.svg" alt="" class="marca-simbolo">
       <span class="marca-nome">Jusante</span>
-      <span class="marca-sub">Jóias inspiradas no Rio Minho</span>
+      <svg class="marca-linha" viewBox="0 0 160 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M2 9 H58 C66 9, 68 4, 74 4 C78 4, 79 7, 77.5 9"/><path d="M83 9 C 86 12, 92 11, 96 9 H158"/></svg>
+      <span class="marca-sub">Joias autorais inspiradas pela natureza</span>
     </a>
     <nav class="nav nav-dir">
+      <a href="#/atlas">Atlas</a>
       <a href="#/atelier">Atelier</a>
       <button class="saco-btn" data-acao="abrir-saco">Pacote <span class="saco-n">0</span></button>
     </nav>
@@ -34,9 +36,10 @@
 
   <footer class="rodape">
     <div class="rodape-marca">
-      <img src="assets/simbolo.svg" alt="" width="54" height="54">
       <span class="marca-nome">Jusante</span>
-      <span class="marca-sub">Jóias inspiradas no Rio Minho</span>
+      <svg class="marca-linha" viewBox="0 0 160 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M2 9 H58 C66 9, 68 4, 74 4 C78 4, 79 7, 77.5 9"/><path d="M83 9 C 86 12, 92 11, 96 9 H158"/></svg>
+      <span class="marca-sub">Joias autorais inspiradas pela natureza</span>
+      <p class="rodape-frase">A natureza inspira. A arte interpreta. A alma contempla.</p>
     </div>
     <div class="rodape-cols">
       <div>
@@ -47,19 +50,19 @@
         <a href="#/atelier">Encomendas por medida</a>
       </div>
       <div>
-        <h4>Atelier</h4>
-        <a href="#/atelier">A autora</a>
-        <a href="#/atelier">Processo</a>
+        <h4>A marca</h4>
+        <a href="#/atelier">Atelier e processo</a>
+        <a href="#/atlas">Atlas da Jusante</a>
         <a href="#/atelier">Certificado de autenticidade</a>
       </div>
       <div>
         <h4>Contacto</h4>
-        <span>Alto Minho, Portugal</span>
+        <span>Rio Minho / Miño · Portugal e Galiza</span>
         <span>ola@jusante.pt</span>
         <span>@jusante.joias</span>
       </div>
     </div>
-    <p class="rodape-fim">© <span id="ano"></span> Jusante · Cada peça é esculpida à mão livre e assinada: a inspiração repete-se, a peça nunca.</p>
+    <p class="rodape-fim">© <span id="ano"></span> Jusante · Duas margens. Uma corrente.</p>
   </footer>
 
   <!-- Pacote de compras -->
@@ -83,10 +86,10 @@
     <div class="fotos-opcoes">
       <label>Fundo
         <select data-opcao="fundo">
-          <option value="creme">Creme</option>
+          <option value="creme">Neblina</option>
           <option value="branco">Branco</option>
-          <option value="verde">Verde</option>
-          <option value="areia">Areia</option>
+          <option value="verde">Oceano profundo</option>
+          <option value="areia">Areia da margem</option>
         </select>
       </label>
       <label>Formato

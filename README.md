@@ -1,4 +1,4 @@
-# Jusante — Jóias inspiradas no Rio Minho
+# Jusante — Joias autorais inspiradas pela natureza
 
 Pré-visualização da loja Jusante (jóias de autor esculpidas à mão livre: cada peça é única), feita para **testar as fotografias das peças** antes da migração para o Shopify.
 
@@ -42,6 +42,16 @@ Tudo está em `js/produtos.js`. **Cada entrada é uma peça única**, com as fot
 - `vendida: false` → à venda; `vendida: true` → aparece com o selo "Vendida" e fica na loja como arquivo.
 - Para juntar uma peça nova a uma coleção, copie uma entrada, mude o `handle` (sem espaços nem acentos, ex.: `anel-seixo-2`) e as fotos.
 
+## Identidade (Brand Bible v1.0)
+
+O site segue o Brand Bible da Jusante:
+
+- **Coleções permanentes:** Poente, Corrente, Margem.
+- **Página inicial (9.1):** hero → manifesto → assinatura (duas partes, fenda, sem simetria) → coleções → peças → gesto artesanal → frase de respiro → opala → Atlas → newsletter "Acompanhe o curso".
+- **Textos aprovados:** "O rio que segue. A luz que transforma. A natureza que ensina.", "Da matéria à forma. Do desenho à joia.", "Acompanhe o curso".
+- **Atlas da Jusante** (`#/atlas`): diário de campo com capítulos. É uma seleção editorial, não um inventário dos afluentes.
+- O logótipo é provisório: JUSANTE em serif maiúsculas com a linha de rio. Basta trocá-lo quando houver o ficheiro final.
+
 ## Especialidade: Opala Favo de Mel da Etiópia
 
 Secção própria em `#/opala`, com um bloco de destaque na página inicial e um filtro "Opala" na loja.
@@ -70,10 +80,11 @@ Atenção: no plano gratuito, o GitHub Pages só publica a partir de repositóri
 
 ```
 index.html          página única (início, loja, coleções, produto, atelier)
-css/estilo.css      identidade visual (verde #1B3B36, ouro #D9B48F, creme #FBF8F0)
+css/estilo.css      identidade visual (paleta do Brand Bible: Oceano Profundo #0F3D3E, Rio Minho #517C7D,
+                    Folha Seca #A3A68C, Areia da Margem #D9D2C1, Neblina #EAE8E1, Terra Rosada #C8A89A)
 js/produtos.js      catálogo — editar aqui
 js/app.js           navegação, saco de compras, modo fotos
-assets/simbolo.svg  símbolo Jusante
+assets/simbolo.svg  símbolo provisório (duas margens + fenda); substituir pelo logótipo final
 assets/fontes/      Great Vibes, Cormorant Garamond, Jost (licença OFL)
 fotos/              coloque aqui as fotos definitivas
 ```
