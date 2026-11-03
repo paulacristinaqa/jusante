@@ -146,16 +146,15 @@
   /* ---------------- componentes ---------------- */
   const ondas = `<svg class="ondas" viewBox="0 0 1200 38" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 14 Q 50 2 100 14 T 200 14 T 300 14 T 400 14 T 500 14 T 600 14 T 700 14 T 800 14 T 900 14 T 1000 14 T 1100 14 T 1200 14"/><path d="M0 24 Q 50 12 100 24 T 200 24 T 300 24 T 400 24 T 500 24 T 600 24 T 700 24 T 800 24 T 900 24 T 1000 24 T 1100 24 T 1200 24" opacity=".5"/></svg>`;
 
+  const aVenda = (p) => !p.vendida;
   function pontos(p) {
-    return `<span class="pontos" aria-hidden="true">${Array.from({ length: p.edicao }, (_, i) => `<i class="${i < p.disponiveis ? "cheio" : ""}"></i>`).join("")}</span>`;
+    return `<span class="pontos" aria-hidden="true"><i class="${aVenda(p) ? "cheio" : ""}"></i></span>`;
   }
   function tiragemTxt(p) {
-    if (p.edicao === 1) return p.disponiveis ? "Peça única" : "Peça única · vendida";
-    if (!p.disponiveis) return `Edição de ${p.edicao} · esgotada`;
-    return `Edição de ${p.edicao} · ${p.disponiveis === 1 ? "última peça" : "restam " + p.disponiveis}`;
+    return aVenda(p) ? `Peça única · ${esc(p.colecao)}` : "Peça única · vendida";
   }
   function cartao(p) {
-    const selo = !p.disponiveis ? `<span class="selo esgotado">${p.edicao === 1 ? "Vendida" : "Esgotada"}</span>` : p.edicao === 1 ? `<span class="selo selo-opala">Peça única</span>` : p.disponiveis === 1 ? `<span class="selo">Última peça</span>` : "";
+    const selo = aVenda(p) ? "" : `<span class="selo esgotado">Vendida</span>`;
     return `<article class="cartao surgir">
       <a class="cartao-foto" href="#/p/${p.handle}">${selo}${slot(p.handle, { rotulo: p.titulo })}</a>
       <div>
@@ -168,26 +167,26 @@
 
   /* ---------------- páginas ---------------- */
   function paginaInicio() {
-    const destaque = P.filter((p) => p.disponiveis && !p.especialidade).slice(0, 4);
+    const destaque = P.filter((p) => aVenda(p) && !p.especialidade).slice(0, 4);
     return `
     <section class="hero">
       <div class="hero-texto">
         <span class="rotulo">Jóias de autor · Alto Minho</span>
         <h1>Peças que seguem <em>a corrente</em><br>e nunca se repetem.</h1>
-        <p>Cada jóia Jusante nasce de uma margem, de um seixo, de uma manhã de nevoeiro no Rio Minho. Desenhada e feita à mão, em tiragens de três a nove exemplares — numerados, assinados, irrepetíveis.</p>
+        <p>Cada jóia Jusante nasce de uma margem, de um seixo, de uma manhã de nevoeiro no Rio Minho. Esculpida à mão livre, com lâminas e ferramentas de escultura, sem moldes. As coleções repetem-se; as peças, nunca.</p>
         <div class="hero-acoes"><a class="btn" href="#/loja">Ver as peças</a><a class="btn" href="#/atelier" style="border-color:transparent">O atelier →</a></div>
       </div>
       <div class="hero-imagem">${slot("hero", { rotulo: "Imagem principal", hover: false, formato: "auto" })}
-        <span class="hero-numero">n.º 01 — Coleção Foz</span></div>
+        <span class="hero-numero">Coleção Foz</span></div>
       <img class="hero-ornamento" src="${SIMBOLO}" alt="">
     </section>
 
     <section class="manifesto surgir">
       <img class="divisor" src="${SIMBOLO}" alt="">
-      <p>Não fazemos coleções para repetir. Fazemos <em>pequenas tiragens</em> de um gesto — e quando a última peça encontra dona, o molde volta ao rio.</p>
+      <p>Não há moldes nem cortadores. Cada peça é esculpida <em>à mão livre</em> — como o rio, que corre sempre no mesmo leito, mas nunca com a mesma água.</p>
       <div class="numeros">
-        <div><strong>3–9</strong><span>Exemplares por peça</span></div>
-        <div><strong>100%</strong><span>Feito à mão</span></div>
+        <div><strong>1/1</strong><span>Cada peça é única</span></div>
+        <div><strong>0</strong><span>Moldes</span></div>
         <div><strong>1</strong><span>Autora, uma assinatura</span></div>
       </div>
     </section>
@@ -214,7 +213,7 @@
   /* ---------------- especialidade: opala ---------------- */
   const OPALAS = () => P.filter((p) => p.especialidade === "opala");
   function blocoOpala() {
-    const lista = OPALAS().filter((p) => p.disponiveis).slice(0, 3);
+    const lista = OPALAS().filter(aVenda).slice(0, 3);
     return `<section class="opala-bloco">
       <div class="envolvente opala-grelha">
         <div class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</div>
@@ -306,16 +305,16 @@
             <span class="rotulo">O atelier</span>
             <h2 class="titulo" style="margin-top:14px">Um trabalho <em>autoral</em>,<br>peça a peça.</h2>
             <p>Jusante é o atelier de uma só artesã, instalado junto ao Rio Minho. Cada desenho começa num caderno de campo — um seixo, a linha de uma margem, o reflexo da ponte ao fim da tarde — e termina na bancada, entre o aço, a cerâmica plástica e as ferramentas.</p>
-            <p>Não há produção em série. Cada modelo existe numa tiragem fechada, entre três e nove exemplares. Quando se esgota, não volta.</p>
+            <p>Não há produção em série nem moldes. Cada peça é esculpida à mão livre, com lâminas e ferramentas de escultura. As coleções e as inspirações repetem-se, mas nenhuma peça sai igual a outra.</p>
             ${completo ? `<p>Aceitamos um número muito limitado de encomendas por medida por ano — presentes, peças a pares e variações de cor das peças da loja. Escreva-nos para <span style="color:var(--ouro)">ola@jusante.pt</span>.</p>` : ""}
             <span class="assinatura">Jusante</span>
           </div>
         </div>
         <div class="processo">
           <div><b>i.</b><h4>Recolha</h4><p>Formas, texturas e cores recolhidas ao longo do rio, de Melgaço à foz.</p></div>
-          <div><b>ii.</b><h4>Desenho</h4><p>Esboços à mão e modelação peça a peça, sem moldes industriais.</p></div>
+          <div><b>ii.</b><h4>Escultura</h4><p>À mão livre, com lâminas e ferramentas de escultura. Sem moldes nem cortadores: a forma nasce na hora.</p></div>
           <div><b>iii.</b><h4>Bancada</h4><p>Montagem e acabamento à mão em aço inoxidável e aço cirúrgico, metais resistentes que não escurecem.</p></div>
-          <div><b>iv.</b><h4>Assinatura</h4><p>Cada exemplar é gravado com o número da tiragem e o punção da autora.</p></div>
+          <div><b>iv.</b><h4>Assinatura</h4><p>Cada peça é fotografada e assinada pela autora, e segue com certificado de autenticidade.</p></div>
         </div>
       </div>
     </section>`;
@@ -326,8 +325,8 @@
       <img src="${SIMBOLO}" alt="">
       <div>
         <span class="rotulo ouro">Certificado de autenticidade</span>
-        <h3 class="titulo" style="font-size:2rem;margin-top:10px">Numerada, assinada, <em>única</em>.</h3>
-        <p>Todas as peças seguem com certificado assinado pela autora, com o número do exemplar (ex.: 2/5), os materiais, o peso e a data de criação. A tiragem é registada e nunca é reeditada.</p>
+        <h3 class="titulo" style="font-size:2rem;margin-top:10px">Esculpida, assinada, <em>única</em>.</h3>
+        <p>Todas as peças seguem com certificado assinado pela autora, com a fotografia da própria peça, os materiais e a data de criação. Pode haver outras peças com a mesma inspiração, mas nunca esta.</p>
       </div>
     </div>`;
   }
@@ -336,8 +335,8 @@
     return `<section class="newsletter seccao">
       <div class="envolvente surgir">
         <span class="rotulo ouro">Lista de espera</span>
-        <h2 class="titulo" style="margin-top:12px">Saiba primeiro das <em>novas tiragens</em></h2>
-        <p>As tiragens esgotam depressa. Quem está na lista recebe cada nova peça 48 horas antes da loja.</p>
+        <h2 class="titulo" style="margin-top:12px">Veja primeiro as <em>peças novas</em></h2>
+        <p>Como cada peça é única, quando é vendida não volta. Quem está na lista vê as peças novas 48 horas antes da loja.</p>
         <form data-acao="newsletter"><input type="email" placeholder="O seu email" required><button>Inscrever</button></form>
       </div>
     </section>`;
@@ -346,11 +345,11 @@
   function paginaLoja(filtro) {
     const tipos = ["Todas", ...new Set(P.map((p) => p.tipo)), "Opala"];
     const f = filtro || "Todas";
-    const lista = f === "Todas" ? P : P.filter((p) => p.tipo === f || p.colecao === f);
+    const lista = (f === "Todas" ? P : P.filter((p) => p.tipo === f || p.colecao === f)).slice().sort((a, b) => a.vendida - b.vendida);
     return `<section class="loja-cab">
         <img class="divisor" src="${SIMBOLO}" alt="">
         <h1 class="titulo">As <em>peças</em></h1>
-        <p>Tiragens fechadas e numeradas. O número de pontos mostra quantos exemplares de cada peça ainda existem.</p>
+        <p>Cada peça é esculpida à mão livre e é única: a fotografia mostra a peça exata que vai receber. As peças vendidas ficam aqui como arquivo.</p>
       </section>
       <div class="envolvente">
         <div class="filtros">${tipos.map((t) => `<button data-filtro="${t}" class="${t === f ? "ativo" : ""}">${t}</button>`).join("")}</div>
@@ -378,10 +377,9 @@
     if (!p) return `<section class="loja-cab"><h1 class="titulo">Peça não encontrada</h1><p><a class="btn" href="#/loja">Voltar à loja</a></p></section>`;
     const fotos = fotosDe(h);
     if (fotoAtiva >= Math.max(fotos.length, 1)) fotoAtiva = 0;
-    const numero = p.edicao - p.disponiveis + 1;
     const rel = P.filter((x) => x.handle !== h && (x.colecao === p.colecao || x.tipo === p.tipo)).slice(0, 4);
-    const tams = p.tamanhos.length
-      ? `<div><span class="rotulo" style="font-size:.66rem">Tamanho</span><div class="opcoes-tam" style="margin-top:10px">${p.tamanhos.map((t) => `<button data-tam="${t}" class="${t === tamanho ? "ativo" : ""}">${t}</button>`).join("")}</div></div>`
+    const tams = p.tamanho
+      ? `<div class="tamanho-fixo"><span class="rotulo" style="font-size:.66rem">Tamanho</span> <strong>${esc(p.tamanho)}</strong> <small>Peça única, só existe neste tamanho.</small></div>`
       : "";
     const miniaturas = Array.from({ length: Math.max(fotos.length, 1) + (cfg.modo && fotos.length < MAX_FOTOS && fotos.length ? 1 : 0) }, (_, i) =>
       `<div role="button" tabindex="0" data-mini="${i}" class="mini ${i === fotoAtiva ? "ativo" : ""}" aria-label="Foto ${i + 1}">${slot(h, { idx: i, hover: false, rotulo: i < fotos.length ? "" : "+" })}</div>`
@@ -398,11 +396,15 @@
           <div class="produto-preco">${eur(p.preco)}</div>
           <div class="edicao-caixa">
             <div class="linha1"><span class="rotulo" style="font-size:.66rem">${tiragemTxt(p)}</span>${pontos(p)}</div>
-            <small>${p.edicao === 1 ? (p.disponiveis ? `A réplica de opala foi modelada à mão em cerâmica plástica e não se repete: não há segunda edição. Segue com certificado assinado.` : `Esta peça única já encontrou dona. Pergunte-nos por uma réplica por medida.`) : p.disponiveis ? `Receberá o exemplar <strong>n.º ${numero}/${p.edicao}</strong>, gravado e acompanhado de certificado assinado.` : `Todos os ${p.edicao} exemplares encontraram dona. Inscreva-se para saber da próxima tiragem.`}</small>
+            <small>${aVenda(p)
+              ? (p.efeito
+                ? `A réplica de opala foi esculpida à mão em cerâmica plástica: esta é a peça exata da fotografia, e não há outra igual. Segue com certificado assinado.`
+                : `Esculpida à mão livre: esta é a peça exata da fotografia. Outras peças da coleção ${esc(p.colecao)} terão a mesma inspiração, mas nunca serão iguais. Segue com certificado assinado.`)
+              : `Esta peça já encontrou dona. Veja outras peças da coleção ${esc(p.colecao)}, ou peça-nos uma por medida.`}</small>
           </div>
           <p class="produto-desc">${esc(p.descricao)}</p>
           ${tams}
-          ${p.disponiveis
+          ${aVenda(p)
             ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao pacote</button>`
             : `<a class="btn btn-cheio" href="#/" data-acao="lista-espera" style="text-align:center">Entrar na lista de espera</a>`}
           ${p.efeito ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Réplica de opala</span><dl>
@@ -467,7 +469,7 @@
     else box.innerHTML = saco.map((it, i) => {
       const p = porHandle(it.handle); if (!p) return "";
       return `<div class="saco-item">${slot(p.handle, { hover: false, rotulo: "" })}
-        <div><h4>${esc(p.titulo)}</h4><small>${esc(p.material)}${it.tam ? " · Tam. " + it.tam : ""}</small><small>Exemplar de tiragem ${p.edicao} · qtd. ${it.q}</small><button data-remover="${i}">Remover</button></div>
+        <div><h4>${esc(p.titulo)}</h4><small>${esc(p.material)}${it.tam ? " · Tam. " + it.tam : ""}</small><small>Peça única</small><button data-remover="${i}">Remover</button></div>
         <strong style="font-family:var(--serif);font-weight:500">${eur(p.preco * it.q)}</strong></div>`;
     }).join("");
     const total = saco.reduce((s, i) => s + (porHandle(i.handle)?.preco || 0) * i.q, 0);
@@ -476,11 +478,9 @@
   }
   function adicionarAoSaco(h) {
     const p = porHandle(h);
-    if (p.tamanhos.length && !tamanho) { toast("Escolha um tamanho"); return; }
-    const ja = saco.filter((i) => i.handle === h).reduce((s, i) => s + i.q, 0);
-    if (ja >= p.disponiveis) { toast(`Só existem ${p.disponiveis} exemplar(es) disponíveis`); return; }
-    const ex = saco.find((i) => i.handle === h && i.tam === tamanho);
-    ex ? ex.q++ : saco.push({ handle: h, tam: tamanho, q: 1 });
+    const ja = saco.some((i) => i.handle === h);
+    if (!aVenda(p) || ja) { toast(ja ? "Esta peça única já está no seu pacote" : "Esta peça já foi vendida"); return; }
+    saco.push({ handle: h, tam: p.tamanho || null, q: 1 });
     guardarSaco();
     document.body.classList.add("saco-aberto");
   }
@@ -541,7 +541,7 @@
   });
 
   document.addEventListener("submit", (e) => {
-    if (e.target.matches('[data-acao="newsletter"]')) { e.preventDefault(); e.target.reset(); toast("Obrigada! Será avisada da próxima tiragem."); }
+    if (e.target.matches('[data-acao="newsletter"]')) { e.preventDefault(); e.target.reset(); toast("Obrigada! Será avisada das peças novas."); }
   });
 
   /* arrastar e largar */

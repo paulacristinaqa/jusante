@@ -1,6 +1,6 @@
 # Jusante — Jóias inspiradas no Rio Minho
 
-Pré-visualização da loja Jusante (jóias de autor, tiragens de 3 a 9 exemplares), feita para **testar as fotografias das peças** antes da migração para o Shopify.
+Pré-visualização da loja Jusante (jóias de autor esculpidas à mão livre: cada peça é única), feita para **testar as fotografias das peças** antes da migração para o Shopify.
 
 Site estático: HTML, CSS e JavaScript, sem instalação nem dependências. Os tipos de letra estão incluídos na pasta `assets/fontes`, por isso também funciona sem internet.
 
@@ -37,14 +37,17 @@ Sugestão para o Shopify: imagens quadradas de 2048 × 2048 px, em JPG ou WebP, 
 
 ## Editar peças
 
-Tudo está em `js/produtos.js`: título, preço, material, coleção, descrição, detalhes, tamanhos e tiragem (`edicao` = total de exemplares, `disponiveis` = quantos restam). Os pontos dourados, os selos "Última peça" e "Esgotada" e o número do exemplar ("n.º 4/5") são calculados a partir destes dois valores.
+Tudo está em `js/produtos.js`. **Cada entrada é uma peça única**, com as fotos dessa peça exata: título, preço, material, coleção, descrição, detalhes e `tamanho` (ou `""`).
+
+- `vendida: false` → à venda; `vendida: true` → aparece com o selo "Vendida" e fica na loja como arquivo.
+- Para juntar uma peça nova a uma coleção, copie uma entrada, mude o `handle` (sem espaços nem acentos, ex.: `anel-seixo-2`) e as fotos.
 
 ## Especialidade: Opala Favo de Mel da Etiópia
 
 Secção própria em `#/opala`, com um bloco de destaque na página inicial e um filtro "Opala" na loja.
 
 - As peças **não têm opala natural**: são feitas em cerâmica plástica com efeito opala. A opala de Welo é apenas a inspiração, e os textos do site dizem-no em todos os sítios.
-- As peças estão no fim de `js/produtos.js`, com `especialidade: "opala"` e `edicao: 1` (peças únicas).
+- As peças estão no fim de `js/produtos.js`, com `especialidade: "opala"`.
 - O campo `efeito` (padrão, tons, forma, medidas) aparece como **Efeito opala** na página de produto.
 - A imagem do destaque na página inicial testa-se no Modo fotos, como as restantes.
 
@@ -78,5 +81,5 @@ fotos/              coloque aqui as fotos definitivas
 ## Para o Shopify
 
 - Os campos de `produtos.js` correspondem aos do Shopify: `handle`, `title`, `body_html`, `product_type`, `tags` (coleção), variantes de tamanho e `images`.
-- A tiragem pode passar para o inventário (quantidade = `disponiveis`) e para um metafield `edicao`.
+- Cada peça é um produto com inventário de 1 unidade. Quando é vendida, o Shopify marca-a como esgotada automaticamente.
 - O checkout desta pré-visualização está desativado de propósito.

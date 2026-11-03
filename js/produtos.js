@@ -12,7 +12,11 @@
       (é assim que ficam visíveis no GitHub Pages para qualquer dispositivo).
 
   MATERIAIS: aço inoxidável e aço cirúrgico (brincos em aço cirúrgico).
-  EDIÇÃO: "edicao" = total de exemplares; "disponiveis" = quantos restam.
+  PEÇAS ÚNICAS: cada peça é esculpida à mão livre e nunca sai igual.
+  Cada entrada é UMA peça, com as fotos dessa peça exata.
+  "vendida": false = à venda; true = vendida (fica visível como arquivo).
+  "tamanho": tamanho desta peça (anéis/pulseiras), ou "" se não se aplica.
+  Para uma peça nova da mesma coleção, copie uma entrada e mude o "handle".
 */
 window.JUSANTE_PRODUTOS = [
   {
@@ -22,12 +26,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 145,
     material: "Aço inoxidável",
-    edicao: 5,
-    disponiveis: 2,
+    vendida: false,
     descricao:
       "Desenhado a partir de um seixo recolhido na margem de Vila Nova de Cerveira. A forma arredondada e a superfície acetinada lembram a pedra polida pela água.",
-    detalhes: ["Aço inoxidável", "Acabamento acetinado à mão", "Não escurece com o uso", "Tamanhos 10–18 por encomenda"],
-    tamanhos: ["12", "14", "16"],
+    detalhes: ["Aço inoxidável", "Acabamento acetinado à mão", "Não escurece com o uso"],
+    tamanho: "14",
     imagens: []
   },
   {
@@ -37,12 +40,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 128,
     material: "Aço cirúrgico dourado",
-    edicao: 7,
-    disponiveis: 4,
+    vendida: false,
     descricao:
       "O desenho nasce do ponto onde o Minho encontra o Atlântico, entre Caminha e A Guarda: duas linhas que se abrem e nunca voltam a fechar.",
     detalhes: ["Aço cirúrgico", "Acabamento dourado", "Fecho de pressão", "Comprimento 3,2 cm"],
-    tamanhos: [],
+    tamanho: "",
     imagens: []
   },
   {
@@ -52,12 +54,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 210,
     material: "Aço inoxidável",
-    edicao: 3,
-    disponiveis: 1,
+    vendida: false,
     descricao:
       "Elos de tamanhos irregulares, escolhidos e montados um a um, como a água a ganhar velocidade depois das pesqueiras de Melgaço.",
     detalhes: ["Aço inoxidável", "Elos montados à mão", "Comprimento 45 cm", "Fecho de mosquetão"],
-    tamanhos: [],
+    tamanho: "",
     imagens: []
   },
   {
@@ -67,12 +68,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Pulseiras",
     preco: 165,
     material: "Aço inoxidável prateado e dourado",
-    edicao: 5,
-    disponiveis: 3,
+    vendida: false,
     descricao:
       "Duas margens, dois tons. Uma fita de aço prateado com um único ponto dourado: a ponte entre Valença e Tui.",
     detalhes: ["Aço inoxidável", "Dois tons: prateado e dourado", "Abertura ajustável", "Largura 6 mm"],
-    tamanhos: ["S", "M"],
+    tamanho: "M",
     imagens: []
   },
   {
@@ -82,12 +82,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 240,
     material: "Aço inoxidável dourado",
-    edicao: 3,
-    disponiveis: 2,
+    vendida: false,
     descricao:
       "Inspirado nas ínsuas, as pequenas ilhas de areia e salgueiros que o rio desenha e apaga. Uma forma orgânica e aberta, que se ajusta ao dedo.",
-    detalhes: ["Aço inoxidável", "Acabamento dourado", "Peça assinada e numerada", "Tamanhos por encomenda"],
-    tamanhos: ["12", "14", "16"],
+    detalhes: ["Aço inoxidável", "Acabamento dourado", "Peça assinada"],
+    tamanho: "15",
     imagens: []
   },
   {
@@ -97,12 +96,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 118,
     material: "Aço cirúrgico e pérola de água doce",
-    edicao: 7,
-    disponiveis: 5,
+    vendida: false,
     descricao:
       "Para as manhãs em que o rio desaparece debaixo do nevoeiro. Uma pérola barroca suspensa numa gota de aço fosco.",
     detalhes: ["Aço cirúrgico", "Pérola barroca de água doce", "Cada pérola é única", "Comprimento 2,8 cm"],
-    tamanhos: [],
+    tamanho: "",
     imagens: []
   },
   {
@@ -112,12 +110,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 185,
     material: "Aço inoxidável dourado",
-    edicao: 5,
-    disponiveis: 0,
+    vendida: true,
     descricao:
       "Um pendente desenhado sobre o mapa do rio entre Monção e Valença, recortado e acabado à mão.",
     detalhes: ["Aço inoxidável", "Acabamento dourado", "Corrente 42 + 3 cm", "Pendente 2,4 cm"],
-    tamanhos: [],
+    tamanho: "",
     imagens: []
   },
   {
@@ -127,18 +124,16 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 98,
     material: "Aço cirúrgico",
-    edicao: 9,
-    disponiveis: 6,
+    vendida: false,
     descricao:
       "Argolas de espessura variável, como o nível da água na foz ao longo do dia. Leves, para usar sempre.",
     detalhes: ["Aço cirúrgico", "Polimento espelhado", "Diâmetro 2 cm", "Fecho de dobradiça"],
-    tamanhos: [],
+    tamanho: "",
     imagens: []
   },
   /* ---------- ESPECIALIDADE: OPALA FAVO DE MEL DA ETIÓPIA ----------
      IMPORTANTE: estas peças NÃO têm opala natural. São feitas à mão em
      cerâmica plástica: são réplicas visuais da opala favo de mel.
-     Cada efeito é modelado à mão e não se repete, por isso edicao: 1.
      "efeito" aparece na ficha da página de produto. */
   {
     handle: "anel-favo",
@@ -148,12 +143,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 690,
     material: "Aço inoxidável e réplica de opala em cerâmica plástica",
-    edicao: 1,
-    disponiveis: 1,
+    vendida: false,
     descricao:
       "Um cabochão oval em cerâmica plástica, modelado à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz. A base em aço foi escolhida à medida deste cabochão.",
-    detalhes: ["Aço inoxidável", "Base com garras", "Tamanho ajustado por encomenda"],
-    tamanhos: ["12", "14", "16"],
+    detalhes: ["Aço inoxidável", "Base com garras"],
+    tamanho: "13",
     efeito: { padrao: "Favo de mel", tons: "Verde, laranja e azul", forma: "Cabochão oval", medidas: "10 × 8 mm" },
     imagens: []
   },
@@ -165,12 +159,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 540,
     material: "Aço inoxidável dourado e réplica de opala em cerâmica plástica",
-    edicao: 1,
-    disponiveis: 1,
+    vendida: false,
     descricao:
       "Uma gota grande em cerâmica plástica, de fundo translúcido, em que o efeito favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
     detalhes: ["Aço inoxidável dourado", "Moldura em fio", "Corrente 45 cm"],
-    tamanhos: [],
+    tamanho: "",
     efeito: { padrao: "Favo de mel com reflexos largos", tons: "Laranja e verde", forma: "Cabochão em gota", medidas: "14 × 10 mm" },
     imagens: []
   },
@@ -182,12 +175,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 460,
     material: "Aço cirúrgico e réplica de opala em cerâmica plástica",
-    edicao: 1,
-    disponiveis: 1,
+    vendida: false,
     descricao:
       "Dois cabochões em cerâmica plástica, modelados lado a lado a partir da mesma mistura de cores, para que o efeito favo de mel seja parecido nos dois, mas nunca igual.",
     detalhes: ["Aço cirúrgico", "Base em virola", "Fecho de pressão", "Comprimento 1,6 cm"],
-    tamanhos: [],
+    tamanho: "",
     efeito: { padrao: "Favo de mel", tons: "Azul e verde", forma: "Cabochão redondo", medidas: "6 mm" },
     imagens: []
   },
@@ -199,12 +191,11 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 380,
     material: "Aço inoxidável e réplica de opala em cerâmica plástica",
-    edicao: 1,
-    disponiveis: 0,
+    vendida: true,
     descricao:
       "Um cabochão em cerâmica plástica, em tons de mel, sobre uma fita de aço com um único ponto dourado, como o sol baixo sobre o Minho.",
     detalhes: ["Aço inoxidável", "Fita com detalhe dourado"],
-    tamanhos: [],
+    tamanho: "",
     efeito: { padrao: "Favo de mel", tons: "Mel e âmbar", forma: "Cabochão oval", medidas: "9 × 7 mm" },
     imagens: []
   }
