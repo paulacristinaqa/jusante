@@ -160,7 +160,7 @@
       <a class="cartao-foto" href="#/p/${p.handle}">${selo}${slot(p.handle, { rotulo: p.titulo })}</a>
       <div>
         <div class="cartao-info"><h3><a href="#/p/${p.handle}">${esc(p.titulo)}</a></h3><span class="preco">${eur(p.preco)}</span></div>
-        <div class="mat">${esc(p.material)}</div>${p.pedra ? `<div class="mat-pedra">${esc(p.pedra.peso)} · ${esc(p.pedra.padrao)}</div>` : ""}
+        <div class="mat">${esc(p.material)}</div>${p.efeito ? `<div class="mat-pedra">Réplica em cerâmica plástica · ${esc(p.efeito.padrao.toLowerCase())}</div>` : ""}
       </div>
       <div class="tiragem">${pontos(p)} ${tiragemTxt(p)}</div>
     </article>`;
@@ -220,12 +220,12 @@
         <div class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</div>
         <div class="surgir">
           <span class="rotulo">Especialidade da casa</span>
-          <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>da Etiópia</em></h2>
-          <p>Uma pedra que bebe água. A opala de Welo, no norte da Etiópia, é hidrófana: absorve a humidade e muda de aspeto com ela, quase como um rio. O padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro e procurado nestas opalas.</p>
-          <p>Cada pedra é escolhida uma a uma e recebe uma jóia desenhada só para ela. São peças únicas, sem segunda edição.</p>
+          <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>réplicas em cerâmica plástica</em></h2>
+          <p>A inspiração é uma pedra que bebe água: a opala de Welo, no norte da Etiópia, absorve a humidade e muda de aspeto com ela, quase como um rio. O seu padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro destas opalas.</p>
+          <p>Nesta coleção não uso opala verdadeira: as peças levam <strong>réplicas em cerâmica plástica</strong>, feitas por mim à mão, camada a camada, até a cor ganhar a profundidade e os alvéolos da pedra. Cada efeito sai diferente, por isso todas as peças são únicas.</p>
           <div class="opala-factos">
-            <div><b>Welo</b><span>Origem, Etiópia</span></div>
-            <div><b>Favo de mel</b><span>Padrão</span></div>
+            <div><b>Welo</b><span>Inspiração, Etiópia</span></div>
+            <div><b>Réplicas</b><span>Em cerâmica plástica</span></div>
             <div><b>1/1</b><span>Peças únicas</span></div>
           </div>
           <a class="btn" href="#/opala">Descobrir a especialidade</a>
@@ -240,23 +240,23 @@
     return `<section class="opala-hero">
         <div class="envolvente">
           <img class="divisor" src="${SIMBOLO}" alt="">
-          <span class="rotulo">Especialidade Jusante</span>
-          <h1><span class="brilho">Opala</span> Favo de Mel <em>da Etiópia</em></h1>
-          <p>Peças únicas, desenhadas à volta de opalas de Welo com padrão favo de mel, escolhidas uma a uma. Quando uma pedra encontra dona, a sua jóia deixa de existir.</p>
+          <span class="rotulo">Especialidade Jusante · inspirada na opala da Etiópia</span>
+          <h1><span class="brilho">Opala</span> Favo de Mel <em>réplicas em cerâmica plástica</em></h1>
+          <p>Peças únicas com réplicas da opala favo de mel de Welo, modeladas à mão em cerâmica plástica. A pedra natural é a inspiração: nenhuma peça desta coleção contém opala verdadeira.</p>
         </div>
       </section>
 
       <section class="seccao envolvente opala-pedra-grelha">
         <figure class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</figure>
         <div class="opala-pedra">
-          <div class="surgir"><b>i.</b><h4>Origem</h4><p>Opala preciosa de Welo (Wollo), no planalto do norte da Etiópia, formada em depósitos vulcânicos. É uma das descobertas de opala mais importantes das últimas décadas.</p></div>
-          <div class="surgir"><b>ii.</b><h4>O padrão favo de mel</h4><p>Pequenas células de cor que se acendem e apagam com o movimento, separadas por finas linhas. É o padrão mais raro e mais procurado na opala etíope.</p></div>
-          <div class="surgir"><b>iii.</b><h4>Uma pedra que bebe água</h4><p>A opala de Welo é hidrófana: absorve a água e pode ficar mais transparente enquanto está húmida. Quando seca, a cor regressa. É a pedra mais "de rio" que conhecemos.</p></div>
+          <div class="surgir"><b>i.</b><h4>A pedra que inspira</h4><p>A opala de Welo (Wollo), no planalto do norte da Etiópia, absorve água e muda de aspeto com ela. É a pedra mais "de rio" que conhecemos, e o ponto de partida desta coleção.</p></div>
+          <div class="surgir"><b>ii.</b><h4>O padrão favo de mel</h4><p>Pequenas células de cor que se acendem e apagam com o movimento, separadas por finas linhas. É o padrão mais raro da opala etíope, e é ele que procuro recriar.</p></div>
+          <div class="surgir"><b>iii.</b><h4>Réplicas em cerâmica plástica</h4><p>Não uso opala natural. Cada réplica é modelada à mão em cerâmica plástica, camada a camada, até ganhar a profundidade e os alvéolos de cor da pedra. Nenhum efeito sai igual a outro.</p></div>
         </div>
       </section>
 
       <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
-        <div class="seccao-cab"><div><span class="rotulo ouro">Peças únicas</span><h2 class="titulo">Cada pedra, <em>uma só jóia</em></h2></div></div>
+        <div class="seccao-cab"><div><span class="rotulo ouro">Réplicas únicas em cerâmica plástica</span><h2 class="titulo">Cada réplica, <em>uma só jóia</em></h2></div></div>
         <div class="grelha">${lista.map(cartao).join("")}</div>
       </section>
 
@@ -264,15 +264,15 @@
         <div class="envolvente opala-cuidados-grelha">
           <div>
             <span class="rotulo ouro">Cuidados</span>
-            <h2 class="titulo" style="margin-top:12px">Como cuidar <em>da sua opala</em></h2>
-            <p>A opala é uma pedra delicada e viva. Com alguns cuidados simples, mantém o seu brilho para sempre.</p>
+            <h2 class="titulo" style="margin-top:12px">Como cuidar <em>da sua peça</em></h2>
+            <p>A cerâmica plástica é leve e resistente, mas o acabamento que imita a opala merece alguns cuidados para manter o brilho.</p>
           </div>
           <ul class="detalhes">
-            <li>Tire a jóia antes de lavar as mãos, tomar banho, nadar ou fazer desporto.</li>
-            <li>Evite cremes, perfumes, óleos e produtos de limpeza: a pedra pode absorvê-los.</li>
-            <li>Se a opala ficar molhada e mais transparente, deixe-a secar naturalmente, longe de calor. A cor volta.</li>
-            <li>Limpe só com um pano macio e seco. Nunca use ultrassons nem vapor.</li>
-            <li>Guarde-a na bolsa de linho, separada de outras jóias, longe do sol direto e de mudanças bruscas de temperatura.</li>
+            <li>Tire a jóia antes de tomar banho, nadar ou fazer desporto.</li>
+            <li>Evite perfumes, álcool, acetona e produtos de limpeza: podem tirar o brilho ao acabamento.</li>
+            <li>Não deixe a peça ao sol forte nem junto de fontes de calor, como o tablier do carro.</li>
+            <li>Limpe só com um pano macio, seco ou ligeiramente húmido.</li>
+            <li>Guarde-a na bolsa de linho, separada de outras jóias, para não riscar.</li>
           </ul>
         </div>
       </section>
@@ -281,9 +281,9 @@
         <div class="certificado surgir">
           <img src="${SIMBOLO}" alt="">
           <div>
-            <span class="rotulo ouro">Escolha a sua pedra</span>
-            <h3 class="titulo" style="font-size:2rem;margin-top:10px">Uma jóia por medida, <em>a partir da sua opala</em></h3>
-            <p>Tenho sempre uma pequena seleção de opalas favo de mel por engastar. Escreva para <strong>ola@jusante.pt</strong>: envio-lhe fotografias e vídeos das pedras disponíveis e desenhamos juntas a peça. Cada opala segue com ficha da pedra (origem, peso, medidas, padrão e tratamento) e certificado de autenticidade assinado.</p>
+            <span class="rotulo ouro">Por medida</span>
+            <h3 class="titulo" style="font-size:2rem;margin-top:10px">Escolha os tons <em>da sua opala</em></h3>
+            <p>Posso criar uma réplica de opala só para si, nos tons que preferir: mais verdes, mais laranjas, mais azuis. Escreva para <strong>ola@jusante.pt</strong>, envio-lhe fotografias e vídeos das réplicas em cerâmica plástica disponíveis, e desenhamos juntas a peça. Cada peça segue com certificado de autenticidade assinado.</p>
           </div>
         </div>
       </section>`;
@@ -398,19 +398,20 @@
           <div class="produto-preco">${eur(p.preco)}</div>
           <div class="edicao-caixa">
             <div class="linha1"><span class="rotulo" style="font-size:.66rem">${tiragemTxt(p)}</span>${pontos(p)}</div>
-            <small>${p.edicao === 1 ? (p.disponiveis ? `Esta pedra é única, e a jóia foi desenhada só para ela: não há segunda edição. Segue com ficha da pedra e certificado assinado.` : `Esta peça única já encontrou dona. Pergunte-nos pelas opalas por engastar.`) : p.disponiveis ? `Receberá o exemplar <strong>n.º ${numero}/${p.edicao}</strong>, gravado e acompanhado de certificado assinado.` : `Todos os ${p.edicao} exemplares encontraram dona. Inscreva-se para saber da próxima tiragem.`}</small>
+            <small>${p.edicao === 1 ? (p.disponiveis ? `A réplica de opala foi modelada à mão em cerâmica plástica e não se repete: não há segunda edição. Segue com certificado assinado.` : `Esta peça única já encontrou dona. Pergunte-nos por uma réplica por medida.`) : p.disponiveis ? `Receberá o exemplar <strong>n.º ${numero}/${p.edicao}</strong>, gravado e acompanhado de certificado assinado.` : `Todos os ${p.edicao} exemplares encontraram dona. Inscreva-se para saber da próxima tiragem.`}</small>
           </div>
           <p class="produto-desc">${esc(p.descricao)}</p>
           ${tams}
           ${p.disponiveis
             ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao pacote</button>`
             : `<a class="btn btn-cheio" href="#/" data-acao="lista-espera" style="text-align:center">Entrar na lista de espera</a>`}
-          ${p.pedra ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Ficha da pedra</span><dl>
-            <dt>Pedra</dt><dd>Opala preciosa etíope</dd><dt>Origem</dt><dd>${esc(p.pedra.origem)}</dd><dt>Padrão</dt><dd>${esc(p.pedra.padrao)}</dd>
-            <dt>Peso</dt><dd>${esc(p.pedra.peso)}</dd><dt>Corte</dt><dd>${esc(p.pedra.corte)}</dd><dt>Medidas</dt><dd>${esc(p.pedra.medidas)}</dd><dt>Tratamento</dt><dd>${esc(p.pedra.tratamento)}</dd></dl>
-            <a href="#/opala" class="ficha-link">Cuidados com a opala →</a></div>` : ""}
+          ${p.efeito ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Réplica de opala</span><dl>
+            <dt>Material</dt><dd>Réplica em cerâmica plástica, modelada à mão</dd><dt>Inspiração</dt><dd>Opala favo de mel de Welo, Etiópia</dd><dt>Padrão</dt><dd>${esc(p.efeito.padrao)}</dd>
+            <dt>Tons</dt><dd>${esc(p.efeito.tons)}</dd><dt>Forma</dt><dd>${esc(p.efeito.forma)}</dd><dt>Medidas</dt><dd>${esc(p.efeito.medidas)}</dd></dl>
+            <p class="ficha-nota">Réplica: esta peça não contém opala natural.</p>
+            <a href="#/opala" class="ficha-link">Cuidados com a peça →</a></div>` : ""}
           <ul class="detalhes">${p.detalhes.map((d) => `<li>${esc(d)}</li>`).join("")}<li>${esc(p.material)}</li></ul>
-          <div class="garantias"><span>✦ Feito à mão no Alto Minho</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.pedra ? `<span>✦ Ficha gemológica da pedra</span>` : ""}</div>
+          <div class="garantias"><span>✦ Feito à mão no Alto Minho</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.efeito ? `<span>✦ Réplica de opala feita à mão</span>` : ""}</div>
         </div>
       </section>
     </div>

@@ -135,8 +135,10 @@ window.JUSANTE_PRODUTOS = [
     imagens: []
   },
   /* ---------- ESPECIALIDADE: OPALA FAVO DE MEL DA ETIÓPIA ----------
-     Cada pedra é única, por isso cada peça tem edicao: 1.
-     "pedra" aparece na ficha da página de produto. */
+     IMPORTANTE: estas peças NÃO têm opala natural. São feitas à mão em
+     cerâmica plástica: são réplicas visuais da opala favo de mel.
+     Cada efeito é modelado à mão e não se repete, por isso edicao: 1.
+     "efeito" aparece na ficha da página de produto. */
   {
     handle: "anel-favo",
     titulo: "Anel Favo",
@@ -144,14 +146,14 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Anéis",
     preco: 690,
-    material: "Ouro 18k reciclado e opala etíope",
+    material: "Ouro 18k reciclado e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
-      "Um cabochão oval com um padrão favo de mel nítido, em que cada alvéolo acende uma cor diferente conforme a luz. A garra em ouro foi modelada à volta desta pedra, e de nenhuma outra.",
+      "Um cabochão oval em cerâmica plástica, modelado à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz. A garra em ouro foi feita à medida deste cabochão, e de nenhum outro.",
     detalhes: ["Ouro 18k reciclado", "Engaste em garras modeladas à mão", "Tamanho ajustado por encomenda"],
     tamanhos: ["12", "14", "16"],
-    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "2,1 ct", corte: "Cabochão oval", medidas: "10 × 8 mm", tratamento: "Natural, sem tratamento" },
+    efeito: { padrao: "Favo de mel", tons: "Verde, laranja e azul", forma: "Cabochão oval", medidas: "10 × 8 mm" },
     imagens: []
   },
   {
@@ -161,14 +163,14 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Colares",
     preco: 540,
-    material: "Prata 925 com banho de ouro 18k e opala etíope",
+    material: "Prata 925 com banho de ouro 18k e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
-      "Uma opala grande, de corpo cristalino, em que o favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
+      "Uma gota grande em cerâmica plástica, de fundo translúcido, em que o efeito favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
     detalhes: ["Prata 925 com banho de ouro 18k", "Moldura em fio martelado", "Corrente 45 cm"],
     tamanhos: [],
-    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel com relâmpagos largos", peso: "3,4 ct", corte: "Cabochão em gota", medidas: "14 × 10 mm", tratamento: "Natural, sem tratamento" },
+    efeito: { padrao: "Favo de mel com reflexos largos", tons: "Laranja e verde", forma: "Cabochão em gota", medidas: "14 × 10 mm" },
     imagens: []
   },
   {
@@ -178,14 +180,14 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Brincos",
     preco: 460,
-    material: "Ouro 9k e par de opalas etíopes",
+    material: "Ouro 9k e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
-      "Duas opalas escolhidas uma para a outra no mesmo lote, com o padrão favo de mel e o brilho tão parecidos quanto a natureza permite, mas nunca iguais.",
+      "Dois cabochões em cerâmica plástica, modelados lado a lado a partir da mesma mistura de cores, para que o efeito favo de mel seja parecido nos dois, mas nunca igual.",
     detalhes: ["Ouro 9k", "Engaste em virola", "Fecho de pressão", "Comprimento 1,6 cm"],
     tamanhos: [],
-    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "2 × 0,8 ct", corte: "Cabochão redondo", medidas: "6 mm", tratamento: "Natural, sem tratamento" },
+    efeito: { padrao: "Favo de mel", tons: "Azul e verde", forma: "Cabochão redondo", medidas: "6 mm" },
     imagens: []
   },
   {
@@ -195,14 +197,14 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Anéis",
     preco: 380,
-    material: "Prata 925, ouro 9k e opala etíope",
+    material: "Prata 925, ouro 9k e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 0,
     descricao:
-      "Uma opala de tons de mel engastada numa fita de prata martelada, com um único ponto de ouro, como o sol baixo sobre o Minho.",
+      "Um cabochão em cerâmica plástica, em tons de mel, engastado numa fita de prata martelada com um único ponto de ouro, como o sol baixo sobre o Minho.",
     detalhes: ["Prata 925 martelada", "Engaste em ouro 9k"],
     tamanhos: [],
-    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "1,6 ct", corte: "Cabochão oval", medidas: "9 × 7 mm", tratamento: "Natural, sem tratamento" },
+    efeito: { padrao: "Favo de mel", tons: "Mel e âmbar", forma: "Cabochão oval", medidas: "9 × 7 mm" },
     imagens: []
   }
 ];
@@ -221,7 +223,7 @@ window.JUSANTE_COLECOES = [
 window.JUSANTE_REFERENCIAS = {
   "opala:destaque": {
     url: "https://commons.wikimedia.org/wiki/Special:FilePath/Precious_opal_(Delanta_District,_South_Wello,_Ethiopia)_3_(29719697721).jpg?width=1600",
-    legenda: "Opala preciosa de Welo (Etiópia), imagem de referência",
+    legenda: "Opala natural de Welo (Etiópia), a pedra que inspira esta coleção. As peças Jusante não contêm opala: levam réplicas em cerâmica plástica",
     autor: "James St. John",
     licenca: "CC BY 2.0",
     licencaUrl: "https://creativecommons.org/licenses/by/2.0/",

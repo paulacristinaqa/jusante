@@ -43,8 +43,9 @@ Tudo está em `js/produtos.js`: título, preço, material, coleção, descriçã
 
 Secção própria em `#/opala`, com um bloco de destaque na página inicial e um filtro "Opala" na loja.
 
-- As peças de opala estão no fim de `js/produtos.js`, com `especialidade: "opala"` e `edicao: 1` (peças únicas).
-- O campo `pedra` (origem, padrão, peso, corte, medidas, tratamento) aparece como **Ficha da pedra** na página de produto.
+- As peças **não têm opala natural**: são feitas em cerâmica plástica com efeito opala. A opala de Welo é apenas a inspiração, e os textos do site dizem-no em todos os sítios.
+- As peças estão no fim de `js/produtos.js`, com `especialidade: "opala"` e `edicao: 1` (peças únicas).
+- O campo `efeito` (padrão, tons, forma, medidas) aparece como **Efeito opala** na página de produto.
 - A imagem do destaque na página inicial testa-se no Modo fotos, como as restantes.
 
 ## Publicar no GitHub Pages
