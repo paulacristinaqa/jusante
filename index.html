@@ -7,8 +7,15 @@
   <meta name="description" content="Jusante: joias autorais inspiradas no Rio Minho / Miño e no encontro entre Portugal e Galiza. Peças únicas, esculpidas à mão livre.">
   <link rel="icon" href="assets/simbolo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/estilo.css">
+  <script>
+    /* aplica as opções de leitura antes de desenhar a página */
+    try { var l = JSON.parse(localStorage.getItem("jusante-leitura") || "{}");
+      if (l.grande) document.documentElement.classList.add("letra-grande");
+      if (l.contraste) document.documentElement.classList.add("alto-contraste"); } catch (e) {}
+  </script>
 </head>
 <body>
+  <a class="saltar" href="#app">Saltar para o conteúdo</a>
   <div class="aviso">Joias autorais<span class="so-desktop"> · cada peça é única, esculpida à mão livre</span> · envio gratuito em Portugal</div>
 
   <header class="topo">
@@ -28,11 +35,18 @@
     <nav class="nav nav-dir">
       <a href="#/atlas">Atlas</a>
       <a href="#/atelier">Atelier</a>
-      <button class="saco-btn" data-acao="abrir-saco">Pacote <span class="saco-n">0</span></button>
+      <button class="leitura-btn" data-acao="leitura" aria-label="Opções de leitura: tamanho da letra e contraste" aria-expanded="false" aria-controls="leitura-painel">Aa</button>
+      <button class="saco-btn" data-acao="abrir-saco" aria-label="Abrir o pacote"><span class="saco-txt">Pacote</span> <span class="saco-n">0</span></button>
     </nav>
+    <div class="leitura-painel" id="leitura-painel" role="dialog" aria-label="Opções de leitura">
+      <h3>Leitura</h3>
+      <button class="leitura-op" data-leitura="grande" aria-pressed="false"><span>Letra maior</span><span class="interruptor" aria-hidden="true"></span></button>
+      <button class="leitura-op" data-leitura="contraste" aria-pressed="false"><span>Alto contraste</span><span class="interruptor" aria-hidden="true"></span></button>
+      <small>A escolha fica guardada neste navegador. Também pode aumentar tudo com Ctrl e + (ou ⌘ e + no Mac).</small>
+    </div>
   </header>
 
-  <main id="app"></main>
+  <main id="app" tabindex="-1"></main>
 
   <footer class="rodape">
     <div class="rodape-marca">

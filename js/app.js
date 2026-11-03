@@ -383,7 +383,7 @@
         <span class="rotulo ouro">Acompanhe o curso</span>
         <h2 class="titulo" style="margin-top:12px">Novas peças, histórias e <em>pequenos fragmentos</em> da natureza.</h2>
         <p>Como cada peça é única, quando é vendida não volta. Quem acompanha o curso vê as peças novas 48 horas antes da loja.</p>
-        <form data-acao="newsletter"><input type="email" placeholder="O seu email" required><button>Acompanhar</button></form>
+        <form data-acao="newsletter"><input type="email" placeholder="O seu email" aria-label="O seu email" autocomplete="email" required><button>Acompanhar</button></form>
       </div>
     </section>`;
   }
@@ -456,7 +456,7 @@
     if (fotoAtiva >= Math.max(fotos.length, 1)) fotoAtiva = 0;
     const rel = P.filter((x) => x.handle !== h && (x.colecao === p.colecao || x.tipo === p.tipo)).slice(0, 4);
     const tams = p.tamanho
-      ? `<div class="tamanho-fixo"><span class="rotulo" style="font-size:.66rem">Tamanho</span> <strong>${esc(p.tamanho)}</strong> <small>Peça única, só existe neste tamanho.</small></div>`
+      ? `<div class="tamanho-fixo"><span class="rotulo" style="font-size:.82rem">Tamanho</span> <strong>${esc(p.tamanho)}</strong> <small>Peça única, só existe neste tamanho.</small></div>`
       : "";
     const miniaturas = Array.from({ length: Math.max(fotos.length, 1) + (cfg.modo && fotos.length < MAX_FOTOS && fotos.length ? 1 : 0) }, (_, i) =>
       `<div role="button" tabindex="0" data-mini="${i}" class="mini ${i === fotoAtiva ? "ativo" : ""}" aria-label="Foto ${i + 1}">${slot(h, { idx: i, hover: false, rotulo: i < fotos.length ? "" : "+" })}</div>`
@@ -472,7 +472,7 @@
           <h1>${esc(p.titulo)}</h1>
           <div class="produto-preco">${eur(p.preco)}</div>
           <div class="edicao-caixa">
-            <div class="linha1"><span class="rotulo" style="font-size:.66rem">${tiragemTxt(p)}</span>${pontos(p)}</div>
+            <div class="linha1"><span class="rotulo" style="font-size:.82rem">${tiragemTxt(p)}</span>${pontos(p)}</div>
             <small>${aVenda(p)
               ? (p.efeito
                 ? `A réplica de opala foi esculpida à mão em cerâmica plástica: esta é a peça exata da fotografia, e não há outra igual. Segue com certificado assinado.`
@@ -484,7 +484,7 @@
           ${aVenda(p)
             ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao pacote</button>`
             : `<a class="btn btn-cheio" href="#/" data-acao="lista-espera" style="text-align:center">Entrar na lista de espera</a>`}
-          ${p.efeito ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Réplica de opala</span><dl>
+          ${p.efeito ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.82rem">Réplica de opala</span><dl>
             <dt>Material</dt><dd>Réplica em cerâmica plástica, modelada à mão</dd><dt>Inspiração</dt><dd>Opala favo de mel de Welo, Etiópia</dd><dt>Padrão</dt><dd>${esc(p.efeito.padrao)}</dd>
             <dt>Tons</dt><dd>${esc(p.efeito.tons)}</dd><dt>Forma</dt><dd>${esc(p.efeito.forma)}</dd><dt>Medidas</dt><dd>${esc(p.efeito.medidas)}</dd></dl>
             <p class="ficha-nota">Réplica: esta peça não contém opala natural.</p>
@@ -563,6 +563,23 @@
     document.body.classList.add("saco-aberto");
   }
 
+  /* ---------------- opções de leitura ---------------- */
+  const leitura = Object.assign({ grande: false, contraste: false }, ls.get("jusante-leitura", {}));
+  function aplicarLeitura() {
+    document.documentElement.classList.toggle("letra-grande", leitura.grande);
+    document.documentElement.classList.toggle("alto-contraste", leitura.contraste);
+    document.querySelectorAll("[data-leitura]").forEach((b) => b.setAttribute("aria-pressed", !!leitura[b.dataset.leitura]));
+    ls.set("jusante-leitura", leitura);
+  }
+  function alternarLeitura(k) {
+    leitura[k] = !leitura[k]; aplicarLeitura();
+    toast(k === "grande" ? (leitura.grande ? "Letra maior ligada" : "Letra normal") : (leitura.contraste ? "Alto contraste ligado" : "Contraste normal"));
+  }
+  function fecharLeitura() {
+    const p = document.getElementById("leitura-painel");
+    if (p?.classList.contains("aberto")) { p.classList.remove("aberto"); document.querySelector(".leitura-btn")?.setAttribute("aria-expanded", "false"); }
+  }
+
   /* ---------------- toast ---------------- */
   let tt;
   function toast(m) {
@@ -581,6 +598,9 @@
       alvoFoto.querySelector("input").click();
       return;
     }
+    const op = e.target.closest("[data-leitura]");
+    if (op) { alternarLeitura(op.dataset.leitura); return; }
+    if (!e.target.closest(".leitura-painel, .leitura-btn")) fecharLeitura();
     const mini = e.target.closest("[data-mini]");
     if (mini) { fotoAtiva = +mini.dataset.mini; render(); return; }
     const tam = e.target.closest("[data-tam]");
@@ -595,7 +615,14 @@
     switch (a.dataset.acao) {
       case "abrir-saco": document.body.classList.add("saco-aberto"); break;
       case "fechar-saco": document.body.classList.remove("saco-aberto"); break;
-      case "menu": document.body.classList.toggle("menu-aberto"); break;
+      case "menu": document.body.classList.toggle("menu-aberto"); a.setAttribute("aria-expanded", document.body.classList.contains("menu-aberto")); break;
+      case "leitura": {
+        const painel = document.getElementById("leitura-painel");
+        const aberto = painel.classList.toggle("aberto");
+        a.setAttribute("aria-expanded", aberto);
+        if (aberto) painel.querySelector("button").focus();
+        break;
+      }
       case "adicionar": adicionarAoSaco(a.dataset.handle); break;
       case "checkout": toast("O checkout ficará ativo quando a loja estiver no Shopify"); break;
       case "lista-espera": {
@@ -643,11 +670,15 @@
 
   addEventListener("scroll", () => document.querySelector(".topo").classList.toggle("compacto", scrollY > 60), { passive: true });
   addEventListener("hashchange", render);
-  addEventListener("keydown", (e) => { if (e.key === "Escape") document.body.classList.remove("saco-aberto"); });
+  addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { document.body.classList.remove("saco-aberto"); fecharLeitura(); }
+    if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-mini]")) { e.preventDefault(); e.target.click(); }
+  });
 
   document.getElementById("ano").textContent = new Date().getFullYear();
 
   /* arranque */
   aplicarCfg();
+  aplicarLeitura();
   abrirDB().then(carregarTodas).then(() => { render(); desenharSaco(); });
 })();
