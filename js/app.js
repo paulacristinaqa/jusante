@@ -267,7 +267,7 @@
         <div class="surgir">
           <span class="rotulo">Especialidade da casa</span>
           <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>réplicas em cerâmica plástica</em></h2>
-          <p>A inspiração é uma pedra que bebe água: a opala de Welo, no norte da Etiópia, absorve a humidade e muda de aspeto com ela, quase como um rio. O seu padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro destas opalas.</p>
+          <p>A inspiração é uma pedra que nasce da água e a guarda dentro de si: a opala de Welo, das rochas vulcânicas do norte da Etiópia, absorve a humidade e muda de aspeto com ela. O seu padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro destas opalas.</p>
           <p>Nesta coleção não uso opala verdadeira: as peças levam <strong>réplicas em cerâmica plástica</strong>, feitas por mim à mão, camada a camada, até a cor ganhar a profundidade e os alvéolos da pedra. Cada efeito sai diferente, por isso todas as peças são únicas. Em algumas, a réplica aparece pela fenda, a assinatura da Jusante.</p>
           <div class="opala-factos">
             <div><b>Welo</b><span>Inspiração, Etiópia</span></div>
@@ -295,7 +295,7 @@
       <section class="seccao envolvente opala-pedra-grelha">
         <figure class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}${credito("opala:destaque")}</figure>
         <div class="opala-pedra">
-          <div class="surgir"><b>i.</b><h4>A pedra que inspira</h4><p>A opala de Welo (Wollo), no planalto do norte da Etiópia, absorve água e muda de aspeto com ela. É a pedra mais "de rio" que conhecemos, e o ponto de partida desta coleção.</p></div>
+          <div class="surgir"><b>i.</b><h4>A pedra que inspira</h4><p>A opala de Welo (Wollo) não é uma pedra de rio: forma-se na rocha vulcânica do planalto do norte da Etiópia, a partir de água rica em sílica. Guarda essa água dentro de si e muda de aspeto quando absorve humidade. É essa ligação à água que a traz para a Jusante.</p></div>
           <div class="surgir"><b>ii.</b><h4>O padrão favo de mel</h4><p>Pequenas células de cor que se acendem e apagam com o movimento, separadas por finas linhas. É o padrão mais raro da opala etíope, e é ele que procuro recriar.</p></div>
           <div class="surgir"><b>iii.</b><h4>Réplicas em cerâmica plástica</h4><p>Não uso opala natural. Cada réplica é modelada à mão em cerâmica plástica, camada a camada, até ganhar a profundidade e os alvéolos de cor da pedra. Nenhum efeito sai igual a outro.</p></div>
         </div>
@@ -480,6 +480,7 @@
               : `Esta peça já encontrou dona. Veja outras peças da coleção ${esc(p.colecao)}, ou peça-nos uma por medida.`}</small>
           </div>
           <p class="produto-desc">${esc(p.descricao)}</p>
+          ${p.codigo ? `<p class="produto-codigo">Código da peça: <strong>${esc(p.codigo)}</strong> · <a href="#/certificado/${encodeURIComponent(p.codigo)}">ver certificado</a></p>` : ""}
           ${tams}
           ${aVenda(p)
             ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao pacote</button>`
@@ -495,6 +496,79 @@
       </section>
     </div>
     ${rel.length ? `<section class="relacionados envolvente"><div class="seccao-cab"><h2 class="titulo" style="font-size:2rem">Do mesmo <em>troço do rio</em></h2></div><div class="grelha">${rel.map(cartao).join("")}</div></section>` : ""}`;
+  }
+
+  /* ---------------- certificado e verificação online ----------------
+     Registo artístico do atelier: confirma autoria e identidade da peça.
+     Não é avaliação de valor nem certificação gemológica. */
+  const porCodigo = (c) => P.find((p) => (p.codigo || "").toUpperCase() === String(c || "").trim().toUpperCase().replace(/\s+/g, ""));
+  const urlCertificado = (p) => location.href.split("#")[0] + "#/certificado/" + encodeURIComponent(p.codigo);
+
+  function qrSVG(texto) {
+    if (typeof qrcode !== "function") return "";
+    try {
+      const q = qrcode(0, "M"); q.addData(texto); q.make();
+      return q.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: "QR code para verificar este certificado" });
+    } catch { return ""; }
+  }
+
+  function paginaCertificado(codigo) {
+    const p = porCodigo(codigo);
+    if (!p) {
+      return `<section class="loja-cab">
+        <img class="divisor" src="${SIMBOLO}" alt="">
+        <h1 class="titulo">Código <em>não encontrado</em></h1>
+        <p>Não encontrámos nenhuma peça com o código <strong>${esc(codigo || "")}</strong>. Confirme o código impresso no certificado, ou escreva para ola@jusante.pt.</p>
+        <p style="margin-top:26px"><a class="btn" href="#/verificar">Tentar outro código</a></p>
+      </section>`;
+    }
+    const url = urlCertificado(p);
+    const mat = p.efeito ? `${esc(p.material)}. Réplica: não contém opala natural.` : esc(p.material);
+    return `<section class="cert-pagina envolvente">
+      <div class="cert-confirma" role="status">✓ Peça registada pelo atelier Jusante</div>
+      <article class="cert">
+        <header class="cert-cab">
+          <img src="${SIMBOLO}" alt="">
+          <span class="rotulo ouro">Certificado de autenticidade</span>
+          <span class="cert-marca">Jusante</span>
+        </header>
+        <div class="cert-corpo">
+          <div class="cert-foto">${slot(p.handle, { hover: false, rotulo: p.titulo })}</div>
+          <dl class="cert-dados">
+            <dt>Código</dt><dd class="cert-codigo">${esc(p.codigo)}</dd>
+            <dt>Peça</dt><dd>${esc(p.titulo)}</dd>
+            <dt>Coleção</dt><dd>${p.especialidade ? "Opala favo de mel" : esc(p.colecao)}</dd>
+            <dt>Materiais</dt><dd>${mat}</dd>
+            ${p.tamanho ? `<dt>Tamanho</dt><dd>${esc(p.tamanho)}</dd>` : ""}
+            <dt>Criada em</dt><dd>${esc(p.criada || "")}</dd>
+            <dt>Técnica</dt><dd>Esculpida à mão livre, sem moldes. Peça única.</dd>
+          </dl>
+        </div>
+        <p class="cert-texto">Esta peça foi esculpida à mão no atelier Jusante e não existe outra igual. A fotografia acima é a da própria peça.</p>
+        <footer class="cert-pe">
+          <div class="cert-assinatura"><span>Jusante</span><small>Assinatura da autora</small></div>
+          <div class="cert-qr">${qrSVG(url)}<small>Verificar em<br>${esc(url.replace(/^https?:\/\//, ""))}</small></div>
+        </footer>
+        <p class="cert-nota">Registo artístico do atelier Jusante. Confirma a autoria e a identidade desta peça; não é uma avaliação de valor nem uma certificação gemológica.</p>
+      </article>
+      <div class="cert-acoes">
+        <button class="btn btn-cheio" data-acao="imprimir">Imprimir certificado</button>
+        <a class="btn" href="#/p/${p.handle}">Ver a peça</a>
+      </div>
+    </section>`;
+  }
+
+  function paginaVerificar() {
+    return `<section class="loja-cab">
+        <img class="divisor" src="${SIMBOLO}" alt="">
+        <span class="rotulo ouro">Certificado de autenticidade</span>
+        <h1 class="titulo" style="margin-top:10px">Verificar uma <em>peça</em></h1>
+        <p>Cada peça Jusante tem um código único, impresso no certificado (por exemplo, JUS-PO-26-001). Escreva-o abaixo, ou leia o QR code do certificado com a câmara do telemóvel.</p>
+        <form class="verificar-form" data-acao="verificar">
+          <label for="codigo-peca" class="rotulo">Código da peça</label>
+          <div><input id="codigo-peca" name="codigo" autocomplete="off" spellcheck="false" placeholder="JUS-PO-26-001" required><button class="btn btn-cheio">Verificar</button></div>
+        </form>
+      </section>`;
   }
 
   function paginaAtelier() {
@@ -517,6 +591,8 @@
     else if (r === "atelier") html = paginaAtelier();
     else if (r === "opala") html = paginaOpala();
     else if (r === "atlas") html = paginaAtlas();
+    else if (r === "certificado") html = paginaCertificado(arg);
+    else if (r === "verificar") html = paginaVerificar();
     else html = paginaInicio();
     const y = scrollY;
     app.innerHTML = html;
@@ -624,6 +700,7 @@
         break;
       }
       case "adicionar": adicionarAoSaco(a.dataset.handle); break;
+      case "imprimir": window.print(); break;
       case "checkout": toast("O checkout ficará ativo quando a loja estiver no Shopify"); break;
       case "lista-espera": {
         e.preventDefault();
@@ -646,6 +723,12 @@
   });
 
   document.addEventListener("submit", (e) => {
+    if (e.target.matches('[data-acao="verificar"]')) {
+      e.preventDefault();
+      const c = e.target.codigo.value.trim().toUpperCase().replace(/\s+/g, "");
+      location.hash = "#/certificado/" + encodeURIComponent(c);
+      return;
+    }
     if (e.target.matches('[data-acao="newsletter"]')) { e.preventDefault(); e.target.reset(); toast("Obrigada! Será avisada das peças novas."); }
   });
 

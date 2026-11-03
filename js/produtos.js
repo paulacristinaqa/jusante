@@ -11,6 +11,10 @@
   Cada entrada é UMA peça, com as fotos dessa peça exata.
   "vendida": false = à venda; true = vendida (fica visível como arquivo).
   "tamanho": tamanho desta peça (anéis/pulseiras), ou "" se não se aplica.
+  "codigo": código único da peça, usado no certificado e na verificação
+     online (#/certificado/CÓDIGO). Formato: JUS-coleção-ano-número
+     (PO = Poente, CO = Corrente, MA = Margem, OP = Opala). Nunca reutilizar.
+  "criada": mês e ano em que a peça foi esculpida.
   Para uma peça nova da mesma coleção, copie uma entrada e mude o "handle".
 
   DESCRIÇÕES (Brand Bible, 9.3): forma + matéria + território + sensação.
@@ -36,6 +40,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 68,
     material: "Cerâmica plástica e aço cirúrgico dourado",
+    codigo: "JUS-PO-26-001",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Duas formas orgânicas em diálogo, separadas pela fenda central. Inspirados na luz de fim de tarde sobre as pedras da margem, combinam cerâmica plástica em âmbar e terra rosada com aço cirúrgico dourado. Um lado é maior do que o outro: diferem, mas pertencem um ao outro.",
@@ -50,6 +56,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 72,
     material: "Cerâmica plástica e aço inoxidável",
+    codigo: "JUS-PO-26-002",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Um volume arredondado aberto por uma fenda, que deixa ver uma segunda textura, mais rugosa, em terracota. Inspirado nas pedras que guardam o calor do sol depois do poente.",
@@ -64,6 +72,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 84,
     material: "Cerâmica plástica e aço inoxidável dourado",
+    codigo: "JUS-PO-26-003",
+    criada: "outubro de 2026",
     vendida: true,
     descricao:
       "Pingente bipartido: duas meias-luas de tamanhos diferentes, separadas por um intervalo onde passa a luz. Em tons de âmbar e rosado seco.",
@@ -80,6 +90,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 64,
     material: "Cerâmica plástica e aço cirúrgico",
+    codigo: "JUS-CO-26-001",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Um brinco liso, como a água parada no remanso; o outro com sulcos finos, como a correnteza ao centro do rio. Em verde de rio e azul acinzentado, com aço cirúrgico.",
@@ -94,6 +106,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 92,
     material: "Cerâmica plástica, pérola de água doce e aço inoxidável",
+    codigo: "JUS-CO-26-002",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Uma forma alongada e curva, cortada por uma linha negativa, com uma pérola de água doce suspensa no intervalo. Inspirado no movimento da água a contornar uma pedra.",
@@ -108,6 +122,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 58,
     material: "Cerâmica plástica translúcida e aço cirúrgico",
+    codigo: "JUS-CO-26-003",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Argolas em aço com uma pequena forma em cerâmica plástica translúcida, em azul muito suave. Cada lado tem uma forma diferente, como dois reflexos da mesma margem.",
@@ -124,6 +140,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 70,
     material: "Cerâmica plástica e aço inoxidável",
+    codigo: "JUS-MA-26-001",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Duas massas encostadas, uma lisa e outra granulada, separadas por uma fenda estreita. Inspirado no granito molhado das margens, em cinza mineral e branco quente.",
@@ -138,6 +156,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Pulseiras",
     preco: 88,
     material: "Cerâmica plástica e aço inoxidável",
+    codigo: "JUS-MA-26-002",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Metade lisa, metade texturizada: a calmaria da margem e a correnteza ao lado. Em areia e verde sálvia, com fecho em aço inoxidável.",
@@ -152,6 +172,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 62,
     material: "Cerâmica plástica e aço cirúrgico",
+    codigo: "JUS-MA-26-003",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Duas pequenas formas de contorno irregular, com uma granulação feita ponto a ponto, em verde baixo e sombra húmida. Uma é mais escura do que a outra, como os dois lados de uma pedra à beira do rio.",
@@ -172,6 +194,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 690,
     material: "Aço inoxidável e réplica de opala em cerâmica plástica",
+    codigo: "JUS-OP-26-001",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Um anel com fenda, que deixa ver uma réplica de opala em cerâmica plástica, modelada à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz.",
@@ -188,6 +212,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Colares",
     preco: 540,
     material: "Aço inoxidável dourado e réplica de opala em cerâmica plástica",
+    codigo: "JUS-OP-26-002",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Uma gota grande em cerâmica plástica, de fundo translúcido, em que o efeito favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
@@ -204,6 +230,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Brincos",
     preco: 460,
     material: "Aço cirúrgico e réplica de opala em cerâmica plástica",
+    codigo: "JUS-OP-26-003",
+    criada: "outubro de 2026",
     vendida: false,
     descricao:
       "Dois cabochões em cerâmica plástica, modelados lado a lado a partir da mesma mistura de cores, para que o efeito favo de mel seja parecido nos dois, mas nunca igual.",
@@ -220,6 +248,8 @@ window.JUSANTE_PRODUTOS = [
     tipo: "Anéis",
     preco: 380,
     material: "Aço inoxidável e réplica de opala em cerâmica plástica",
+    codigo: "JUS-OP-26-004",
+    criada: "outubro de 2026",
     vendida: true,
     descricao:
       "Um cabochão em cerâmica plástica, em tons de mel, sobre uma fita de aço com um único ponto dourado, como o sol baixo sobre o Minho.",
