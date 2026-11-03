@@ -403,7 +403,7 @@
           <p class="produto-desc">${esc(p.descricao)}</p>
           ${tams}
           ${p.disponiveis
-            ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao saco</button>`
+            ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao pacote</button>`
             : `<a class="btn btn-cheio" href="#/" data-acao="lista-espera" style="text-align:center">Entrar na lista de espera</a>`}
           ${p.pedra ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Ficha da pedra</span><dl>
             <dt>Pedra</dt><dd>Opala preciosa etíope</dd><dt>Origem</dt><dd>${esc(p.pedra.origem)}</dd><dt>Padrão</dt><dd>${esc(p.pedra.padrao)}</dd>
@@ -462,7 +462,7 @@
     const n = saco.reduce((s, i) => s + i.q, 0);
     document.querySelector(".saco-n").textContent = n;
     const box = document.querySelector(".saco-itens");
-    if (!saco.length) box.innerHTML = `<div class="saco-vazio">O seu saco está vazio.<br><br><a class="btn" href="#/loja" data-acao="fechar-saco">Ver as peças</a></div>`;
+    if (!saco.length) box.innerHTML = `<div class="saco-vazio">O seu pacote está vazio.<br><br><a class="btn" href="#/loja" data-acao="fechar-saco">Ver as peças</a></div>`;
     else box.innerHTML = saco.map((it, i) => {
       const p = porHandle(it.handle); if (!p) return "";
       return `<div class="saco-item">${slot(p.handle, { hover: false, rotulo: "" })}
