@@ -11,6 +11,7 @@
       "imagens", ex.: imagens: ["fotos/anel-seixo-1.jpg", "fotos/anel-seixo-2.jpg"]
       (é assim que ficam visíveis no GitHub Pages para qualquer dispositivo).
 
+  MATERIAIS: aço inoxidável e aço cirúrgico (brincos em aço cirúrgico).
   EDIÇÃO: "edicao" = total de exemplares; "disponiveis" = quantos restam.
 */
 window.JUSANTE_PRODUTOS = [
@@ -20,12 +21,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Seixos",
     tipo: "Anéis",
     preco: 145,
-    material: "Prata 925 fundida em areia do rio",
+    material: "Aço inoxidável",
     edicao: 5,
     disponiveis: 2,
     descricao:
-      "Modelado a partir de um seixo recolhido na margem de Vila Nova de Cerveira. A superfície guarda as marcas da água — cada exemplar é fundido individualmente e nunca sai igual ao anterior.",
-    detalhes: ["Prata 925", "Fundição em areia", "Acabamento acetinado à mão", "Tamanhos 10–18 por encomenda"],
+      "Desenhado a partir de um seixo recolhido na margem de Vila Nova de Cerveira. A forma arredondada e a superfície acetinada lembram a pedra polida pela água.",
+    detalhes: ["Aço inoxidável", "Acabamento acetinado à mão", "Não escurece com o uso", "Tamanhos 10–18 por encomenda"],
     tamanhos: ["12", "14", "16"],
     imagens: []
   },
@@ -35,12 +36,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Foz",
     tipo: "Brincos",
     preco: 128,
-    material: "Prata 925 com banho de ouro 18k",
+    material: "Aço cirúrgico dourado",
     edicao: 7,
     disponiveis: 4,
     descricao:
       "O desenho nasce do ponto onde o Minho encontra o Atlântico, entre Caminha e A Guarda: duas linhas que se abrem e nunca voltam a fechar.",
-    detalhes: ["Prata 925", "Banho de ouro 18k (3 mícrons)", "Fecho de pressão", "Comprimento 3,2 cm"],
+    detalhes: ["Aço cirúrgico", "Acabamento dourado", "Fecho de pressão", "Comprimento 3,2 cm"],
     tamanhos: [],
     imagens: []
   },
@@ -50,12 +51,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Correntes",
     tipo: "Colares",
     preco: 210,
-    material: "Prata 925 oxidada",
+    material: "Aço inoxidável",
     edicao: 3,
     disponiveis: 1,
     descricao:
-      "Elos forjados um a um, de tamanhos irregulares, como a água a ganhar velocidade depois das pesqueiras de Melgaço.",
-    detalhes: ["Prata 925 oxidada", "Elos forjados à mão", "Comprimento 45 cm", "Fecho de mosquetão gravado"],
+      "Elos de tamanhos irregulares, escolhidos e montados um a um, como a água a ganhar velocidade depois das pesqueiras de Melgaço.",
+    detalhes: ["Aço inoxidável", "Elos montados à mão", "Comprimento 45 cm", "Fecho de mosquetão"],
     tamanhos: [],
     imagens: []
   },
@@ -65,12 +66,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Correntes",
     tipo: "Pulseiras",
     preco: 165,
-    material: "Prata 925 e ouro 9k",
+    material: "Aço inoxidável prateado e dourado",
     edicao: 5,
     disponiveis: 3,
     descricao:
-      "Duas margens, dois metais. Uma fita de prata martelada com um único ponto de ouro: a ponte entre Valença e Tui.",
-    detalhes: ["Prata 925 martelada", "Aplicação em ouro 9k", "Abertura ajustável", "Largura 6 mm"],
+      "Duas margens, dois tons. Uma fita de aço prateado com um único ponto dourado: a ponte entre Valença e Tui.",
+    detalhes: ["Aço inoxidável", "Dois tons: prateado e dourado", "Abertura ajustável", "Largura 6 mm"],
     tamanhos: ["S", "M"],
     imagens: []
   },
@@ -80,12 +81,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Foz",
     tipo: "Anéis",
     preco: 240,
-    material: "Ouro 18k reciclado",
+    material: "Aço inoxidável dourado",
     edicao: 3,
     disponiveis: 2,
     descricao:
-      "Inspirado nas ínsuas — as pequenas ilhas de areia e salgueiros que o rio desenha e apaga. Uma forma orgânica que se ajusta ao dedo.",
-    detalhes: ["Ouro 18k reciclado", "Cera perdida", "Peça assinada e numerada", "Tamanhos por encomenda"],
+      "Inspirado nas ínsuas, as pequenas ilhas de areia e salgueiros que o rio desenha e apaga. Uma forma orgânica e aberta, que se ajusta ao dedo.",
+    detalhes: ["Aço inoxidável", "Acabamento dourado", "Peça assinada e numerada", "Tamanhos por encomenda"],
     tamanhos: ["12", "14", "16"],
     imagens: []
   },
@@ -95,12 +96,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Seixos",
     tipo: "Brincos",
     preco: 118,
-    material: "Prata 925 e pérola de água doce",
+    material: "Aço cirúrgico e pérola de água doce",
     edicao: 7,
     disponiveis: 5,
     descricao:
-      "Para as manhãs em que o rio desaparece debaixo do nevoeiro. Uma pérola barroca suspensa numa gota de prata fosca.",
-    detalhes: ["Prata 925", "Pérola barroca de água doce", "Cada pérola é única", "Comprimento 2,8 cm"],
+      "Para as manhãs em que o rio desaparece debaixo do nevoeiro. Uma pérola barroca suspensa numa gota de aço fosco.",
+    detalhes: ["Aço cirúrgico", "Pérola barroca de água doce", "Cada pérola é única", "Comprimento 2,8 cm"],
     tamanhos: [],
     imagens: []
   },
@@ -110,12 +111,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Correntes",
     tipo: "Colares",
     preco: 185,
-    material: "Prata 925 com banho de ouro 18k",
+    material: "Aço inoxidável dourado",
     edicao: 5,
     disponiveis: 0,
     descricao:
-      "Um pendente desenhado sobre o mapa do rio entre Monção e Valença, cortado e polido à mão.",
-    detalhes: ["Prata 925", "Banho de ouro 18k", "Corrente 42 + 3 cm", "Pendente 2,4 cm"],
+      "Um pendente desenhado sobre o mapa do rio entre Monção e Valença, recortado e acabado à mão.",
+    detalhes: ["Aço inoxidável", "Acabamento dourado", "Corrente 42 + 3 cm", "Pendente 2,4 cm"],
     tamanhos: [],
     imagens: []
   },
@@ -125,12 +126,12 @@ window.JUSANTE_PRODUTOS = [
     colecao: "Foz",
     tipo: "Brincos",
     preco: 98,
-    material: "Prata 925",
+    material: "Aço cirúrgico",
     edicao: 9,
     disponiveis: 6,
     descricao:
       "Argolas de espessura variável, como o nível da água na foz ao longo do dia. Leves, para usar sempre.",
-    detalhes: ["Prata 925", "Polimento espelhado", "Diâmetro 2 cm", "Fecho de dobradiça"],
+    detalhes: ["Aço cirúrgico", "Polimento espelhado", "Diâmetro 2 cm", "Fecho de dobradiça"],
     tamanhos: [],
     imagens: []
   },
@@ -146,12 +147,12 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Anéis",
     preco: 690,
-    material: "Ouro 18k reciclado e réplica de opala em cerâmica plástica",
+    material: "Aço inoxidável e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
-      "Um cabochão oval em cerâmica plástica, modelado à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz. A garra em ouro foi feita à medida deste cabochão, e de nenhum outro.",
-    detalhes: ["Ouro 18k reciclado", "Engaste em garras modeladas à mão", "Tamanho ajustado por encomenda"],
+      "Um cabochão oval em cerâmica plástica, modelado à mão para recriar o favo de mel da opala etíope: pequenos alvéolos de cor que mudam conforme a luz. A base em aço foi escolhida à medida deste cabochão.",
+    detalhes: ["Aço inoxidável", "Base com garras", "Tamanho ajustado por encomenda"],
     tamanhos: ["12", "14", "16"],
     efeito: { padrao: "Favo de mel", tons: "Verde, laranja e azul", forma: "Cabochão oval", medidas: "10 × 8 mm" },
     imagens: []
@@ -163,12 +164,12 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Colares",
     preco: 540,
-    material: "Prata 925 com banho de ouro 18k e réplica de opala em cerâmica plástica",
+    material: "Aço inoxidável dourado e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
       "Uma gota grande em cerâmica plástica, de fundo translúcido, em que o efeito favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
-    detalhes: ["Prata 925 com banho de ouro 18k", "Moldura em fio martelado", "Corrente 45 cm"],
+    detalhes: ["Aço inoxidável dourado", "Moldura em fio", "Corrente 45 cm"],
     tamanhos: [],
     efeito: { padrao: "Favo de mel com reflexos largos", tons: "Laranja e verde", forma: "Cabochão em gota", medidas: "14 × 10 mm" },
     imagens: []
@@ -180,12 +181,12 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Brincos",
     preco: 460,
-    material: "Ouro 9k e réplica de opala em cerâmica plástica",
+    material: "Aço cirúrgico e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 1,
     descricao:
       "Dois cabochões em cerâmica plástica, modelados lado a lado a partir da mesma mistura de cores, para que o efeito favo de mel seja parecido nos dois, mas nunca igual.",
-    detalhes: ["Ouro 9k", "Engaste em virola", "Fecho de pressão", "Comprimento 1,6 cm"],
+    detalhes: ["Aço cirúrgico", "Base em virola", "Fecho de pressão", "Comprimento 1,6 cm"],
     tamanhos: [],
     efeito: { padrao: "Favo de mel", tons: "Azul e verde", forma: "Cabochão redondo", medidas: "6 mm" },
     imagens: []
@@ -197,12 +198,12 @@ window.JUSANTE_PRODUTOS = [
     especialidade: "opala",
     tipo: "Anéis",
     preco: 380,
-    material: "Prata 925, ouro 9k e réplica de opala em cerâmica plástica",
+    material: "Aço inoxidável e réplica de opala em cerâmica plástica",
     edicao: 1,
     disponiveis: 0,
     descricao:
-      "Um cabochão em cerâmica plástica, em tons de mel, engastado numa fita de prata martelada com um único ponto de ouro, como o sol baixo sobre o Minho.",
-    detalhes: ["Prata 925 martelada", "Engaste em ouro 9k"],
+      "Um cabochão em cerâmica plástica, em tons de mel, sobre uma fita de aço com um único ponto dourado, como o sol baixo sobre o Minho.",
+    detalhes: ["Aço inoxidável", "Fita com detalhe dourado"],
     tamanhos: [],
     efeito: { padrao: "Favo de mel", tons: "Mel e âmbar", forma: "Cabochão oval", medidas: "9 × 7 mm" },
     imagens: []
@@ -210,9 +211,9 @@ window.JUSANTE_PRODUTOS = [
 ];
 
 window.JUSANTE_COLECOES = [
-  { nome: "Foz", texto: "Onde o rio se entrega ao mar. Linhas abertas, ouro e luz." },
-  { nome: "Seixos", texto: "Formas polidas pelo tempo e pela água. Prata fundida em areia." },
-  { nome: "Correntes", texto: "Elos, movimento e ritmo. Peças forjadas uma a uma." }
+  { nome: "Foz", texto: "Onde o rio se entrega ao mar. Linhas abertas e luz." },
+  { nome: "Seixos", texto: "Formas polidas pelo tempo e pela água. Texturas suaves e orgânicas." },
+  { nome: "Correntes", texto: "Elos, movimento e ritmo. Peças montadas uma a uma." }
 ];
 
 /*

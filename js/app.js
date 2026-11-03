@@ -305,16 +305,16 @@
           <div class="surgir">
             <span class="rotulo">O atelier</span>
             <h2 class="titulo" style="margin-top:14px">Um trabalho <em>autoral</em>,<br>peça a peça.</h2>
-            <p>Jusante é o atelier de uma só ourives, instalado junto ao Rio Minho. Cada desenho começa num caderno de campo — um seixo, a linha de uma margem, o reflexo da ponte ao fim da tarde — e termina na bancada, entre a cera, o fogo e a lima.</p>
+            <p>Jusante é o atelier de uma só artesã, instalado junto ao Rio Minho. Cada desenho começa num caderno de campo — um seixo, a linha de uma margem, o reflexo da ponte ao fim da tarde — e termina na bancada, entre o aço, a cerâmica plástica e as ferramentas.</p>
             <p>Não há produção em série. Cada modelo existe numa tiragem fechada, entre três e nove exemplares. Quando se esgota, não volta.</p>
-            ${completo ? `<p>Aceitamos um número muito limitado de encomendas por medida por ano — alianças, peças de família e reinterpretações de ouro antigo. Escreva-nos para <span style="color:var(--ouro)">ola@jusante.pt</span>.</p>` : ""}
+            ${completo ? `<p>Aceitamos um número muito limitado de encomendas por medida por ano — presentes, peças a pares e variações de cor das peças da loja. Escreva-nos para <span style="color:var(--ouro)">ola@jusante.pt</span>.</p>` : ""}
             <span class="assinatura">Jusante</span>
           </div>
         </div>
         <div class="processo">
           <div><b>i.</b><h4>Recolha</h4><p>Formas, texturas e cores recolhidas ao longo do rio, de Melgaço à foz.</p></div>
-          <div><b>ii.</b><h4>Desenho</h4><p>Esboços à mão e modelação em cera, sem moldes industriais.</p></div>
-          <div><b>iii.</b><h4>Bancada</h4><p>Fundição, forja e acabamento manual em metais reciclados.</p></div>
+          <div><b>ii.</b><h4>Desenho</h4><p>Esboços à mão e modelação peça a peça, sem moldes industriais.</p></div>
+          <div><b>iii.</b><h4>Bancada</h4><p>Montagem e acabamento à mão em aço inoxidável e aço cirúrgico, metais resistentes que não escurecem.</p></div>
           <div><b>iv.</b><h4>Assinatura</h4><p>Cada exemplar é gravado com o número da tiragem e o punção da autora.</p></div>
         </div>
       </div>
