@@ -133,6 +133,77 @@ window.JUSANTE_PRODUTOS = [
     detalhes: ["Prata 925", "Polimento espelhado", "Diâmetro 2 cm", "Fecho de dobradiça"],
     tamanhos: [],
     imagens: []
+  },
+  /* ---------- ESPECIALIDADE: OPALA FAVO DE MEL DA ETIÓPIA ----------
+     Cada pedra é única, por isso cada peça tem edicao: 1.
+     "pedra" aparece na ficha da página de produto. */
+  {
+    handle: "anel-favo",
+    titulo: "Anel Favo",
+    colecao: "Opala",
+    especialidade: "opala",
+    tipo: "Anéis",
+    preco: 690,
+    material: "Ouro 18k reciclado e opala etíope",
+    edicao: 1,
+    disponiveis: 1,
+    descricao:
+      "Um cabochão oval com um padrão favo de mel nítido, em que cada alvéolo acende uma cor diferente conforme a luz. A garra em ouro foi modelada à volta desta pedra, e de nenhuma outra.",
+    detalhes: ["Ouro 18k reciclado", "Engaste em garras modeladas à mão", "Tamanho ajustado por encomenda"],
+    tamanhos: ["12", "14", "16"],
+    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "2,1 ct", corte: "Cabochão oval", medidas: "10 × 8 mm", tratamento: "Natural, sem tratamento" },
+    imagens: []
+  },
+  {
+    handle: "pendente-colmeia",
+    titulo: "Pendente Colmeia",
+    colecao: "Opala",
+    especialidade: "opala",
+    tipo: "Colares",
+    preco: 540,
+    material: "Prata 925 com banho de ouro 18k e opala etíope",
+    edicao: 1,
+    disponiveis: 1,
+    descricao:
+      "Uma opala grande, de corpo cristalino, em que o favo de mel aparece sobretudo nos laranjas e verdes. A moldura lembra o leito do rio a passar à volta de uma pedra.",
+    detalhes: ["Prata 925 com banho de ouro 18k", "Moldura em fio martelado", "Corrente 45 cm"],
+    tamanhos: [],
+    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel com relâmpagos largos", peso: "3,4 ct", corte: "Cabochão em gota", medidas: "14 × 10 mm", tratamento: "Natural, sem tratamento" },
+    imagens: []
+  },
+  {
+    handle: "brincos-alveolo",
+    titulo: "Brincos Alvéolo",
+    colecao: "Opala",
+    especialidade: "opala",
+    tipo: "Brincos",
+    preco: 460,
+    material: "Ouro 9k e par de opalas etíopes",
+    edicao: 1,
+    disponiveis: 1,
+    descricao:
+      "Duas opalas escolhidas uma para a outra no mesmo lote, com o padrão favo de mel e o brilho tão parecidos quanto a natureza permite, mas nunca iguais.",
+    detalhes: ["Ouro 9k", "Engaste em virola", "Fecho de pressão", "Comprimento 1,6 cm"],
+    tamanhos: [],
+    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "2 × 0,8 ct", corte: "Cabochão redondo", medidas: "6 mm", tratamento: "Natural, sem tratamento" },
+    imagens: []
+  },
+  {
+    handle: "anel-mel-do-rio",
+    titulo: "Anel Mel do Rio",
+    colecao: "Opala",
+    especialidade: "opala",
+    tipo: "Anéis",
+    preco: 380,
+    material: "Prata 925, ouro 9k e opala etíope",
+    edicao: 1,
+    disponiveis: 0,
+    descricao:
+      "Uma opala de tons de mel engastada numa fita de prata martelada, com um único ponto de ouro, como o sol baixo sobre o Minho.",
+    detalhes: ["Prata 925 martelada", "Engaste em ouro 9k"],
+    tamanhos: [],
+    pedra: { origem: "Welo (Wollo), Etiópia", padrao: "Favo de mel", peso: "1,6 ct", corte: "Cabochão oval", medidas: "9 × 7 mm", tratamento: "Natural, sem tratamento" },
+    imagens: []
   }
 ];
 

@@ -138,16 +138,17 @@
     return `<span class="pontos" aria-hidden="true">${Array.from({ length: p.edicao }, (_, i) => `<i class="${i < p.disponiveis ? "cheio" : ""}"></i>`).join("")}</span>`;
   }
   function tiragemTxt(p) {
+    if (p.edicao === 1) return p.disponiveis ? "Peça única" : "Peça única · vendida";
     if (!p.disponiveis) return `Edição de ${p.edicao} · esgotada`;
     return `Edição de ${p.edicao} · ${p.disponiveis === 1 ? "última peça" : "restam " + p.disponiveis}`;
   }
   function cartao(p) {
-    const selo = !p.disponiveis ? `<span class="selo esgotado">Esgotada</span>` : p.disponiveis === 1 ? `<span class="selo">Última peça</span>` : "";
+    const selo = !p.disponiveis ? `<span class="selo esgotado">${p.edicao === 1 ? "Vendida" : "Esgotada"}</span>` : p.edicao === 1 ? `<span class="selo selo-opala">Peça única</span>` : p.disponiveis === 1 ? `<span class="selo">Última peça</span>` : "";
     return `<article class="cartao surgir">
       <a class="cartao-foto" href="#/p/${p.handle}">${selo}${slot(p.handle, { rotulo: p.titulo })}</a>
       <div>
         <div class="cartao-info"><h3><a href="#/p/${p.handle}">${esc(p.titulo)}</a></h3><span class="preco">${eur(p.preco)}</span></div>
-        <div class="mat">${esc(p.material)}</div>
+        <div class="mat">${esc(p.material)}</div>${p.pedra ? `<div class="mat-pedra">${esc(p.pedra.peso)} · ${esc(p.pedra.padrao)}</div>` : ""}
       </div>
       <div class="tiragem">${pontos(p)} ${tiragemTxt(p)}</div>
     </article>`;
@@ -155,7 +156,7 @@
 
   /* ---------------- páginas ---------------- */
   function paginaInicio() {
-    const destaque = P.filter((p) => p.disponiveis).slice(0, 4);
+    const destaque = P.filter((p) => p.disponiveis && !p.especialidade).slice(0, 4);
     return `
     <section class="hero">
       <div class="hero-texto">
@@ -186,7 +187,9 @@
       ${blocoColecoes()}
     </section>
 
-    <section class="seccao envolvente" style="padding-top:0">
+    ${blocoOpala()}
+
+    <section class="seccao envolvente">
       <div class="seccao-cab"><div><span class="rotulo">Ainda disponíveis</span><h2 class="titulo">Peças da <em>estação</em></h2></div><a class="btn" href="#/loja">Ver todas</a></div>
       <div class="grelha">${destaque.map(cartao).join("")}</div>
     </section>
@@ -194,6 +197,83 @@
     ${blocoAtelier()}
     <section class="seccao envolvente">${blocoCertificado()}</section>
     ${blocoNewsletter()}`;
+  }
+
+  /* ---------------- especialidade: opala ---------------- */
+  const OPALAS = () => P.filter((p) => p.especialidade === "opala");
+  function blocoOpala() {
+    const lista = OPALAS().filter((p) => p.disponiveis).slice(0, 3);
+    return `<section class="opala-bloco">
+      <div class="envolvente opala-grelha">
+        <div class="surgir opala-foto">${slot("opala:destaque", { rotulo: "Opala favo de mel — detalhe", hover: false, formato: "4/5", modo: "substituir" })}</div>
+        <div class="surgir">
+          <span class="rotulo">Especialidade da casa</span>
+          <h2 class="titulo" style="margin-top:14px"><span class="brilho">Opala</span> Favo de Mel<br><em>da Etiópia</em></h2>
+          <p>Uma pedra que bebe água. A opala de Welo, no norte da Etiópia, é hidrófana: absorve a humidade e muda de aspeto com ela, quase como um rio. O padrão favo de mel, em que a cor se acende em pequenos alvéolos, é o mais raro e procurado nestas opalas.</p>
+          <p>Cada pedra é escolhida uma a uma e recebe uma jóia desenhada só para ela. São peças únicas, sem segunda edição.</p>
+          <div class="opala-factos">
+            <div><b>Welo</b><span>Origem, Etiópia</span></div>
+            <div><b>Favo de mel</b><span>Padrão</span></div>
+            <div><b>1/1</b><span>Peças únicas</span></div>
+          </div>
+          <a class="btn" href="#/opala">Descobrir a especialidade</a>
+        </div>
+      </div>
+      ${lista.length ? `<div class="envolvente"><div class="grelha grelha-3 opala-cartoes">${lista.map(cartao).join("")}</div></div>` : ""}
+    </section>`;
+  }
+
+  function paginaOpala() {
+    const lista = OPALAS();
+    return `<section class="opala-hero">
+        <div class="envolvente">
+          <img class="divisor" src="${SIMBOLO}" alt="">
+          <span class="rotulo">Especialidade Jusante</span>
+          <h1><span class="brilho">Opala</span> Favo de Mel <em>da Etiópia</em></h1>
+          <p>Peças únicas, desenhadas à volta de opalas de Welo com padrão favo de mel, escolhidas uma a uma. Quando uma pedra encontra dona, a sua jóia deixa de existir.</p>
+        </div>
+      </section>
+
+      <section class="seccao envolvente">
+        <div class="opala-pedra">
+          <div class="surgir"><b>i.</b><h4>Origem</h4><p>Opala preciosa de Welo (Wollo), no planalto do norte da Etiópia, formada em depósitos vulcânicos. É uma das descobertas de opala mais importantes das últimas décadas.</p></div>
+          <div class="surgir"><b>ii.</b><h4>O padrão favo de mel</h4><p>Pequenas células de cor que se acendem e apagam com o movimento, separadas por finas linhas. É o padrão mais raro e mais procurado na opala etíope.</p></div>
+          <div class="surgir"><b>iii.</b><h4>Uma pedra que bebe água</h4><p>A opala de Welo é hidrófana: absorve a água e pode ficar mais transparente enquanto está húmida. Quando seca, a cor regressa. É a pedra mais "de rio" que conhecemos.</p></div>
+        </div>
+      </section>
+
+      <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
+        <div class="seccao-cab"><div><span class="rotulo ouro">Peças únicas</span><h2 class="titulo">Cada pedra, <em>uma só jóia</em></h2></div></div>
+        <div class="grelha">${lista.map(cartao).join("")}</div>
+      </section>
+
+      <section class="opala-cuidados seccao">
+        <div class="envolvente opala-cuidados-grelha">
+          <div>
+            <span class="rotulo ouro">Cuidados</span>
+            <h2 class="titulo" style="margin-top:12px">Como cuidar <em>da sua opala</em></h2>
+            <p>A opala é uma pedra delicada e viva. Com alguns cuidados simples, mantém o seu brilho para sempre.</p>
+          </div>
+          <ul class="detalhes">
+            <li>Tire a jóia antes de lavar as mãos, tomar banho, nadar ou fazer desporto.</li>
+            <li>Evite cremes, perfumes, óleos e produtos de limpeza: a pedra pode absorvê-los.</li>
+            <li>Se a opala ficar molhada e mais transparente, deixe-a secar naturalmente, longe de calor. A cor volta.</li>
+            <li>Limpe só com um pano macio e seco. Nunca use ultrassons nem vapor.</li>
+            <li>Guarde-a na bolsa de linho, separada de outras jóias, longe do sol direto e de mudanças bruscas de temperatura.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccao envolvente">
+        <div class="certificado surgir">
+          <img src="${SIMBOLO}" alt="">
+          <div>
+            <span class="rotulo ouro">Escolha a sua pedra</span>
+            <h3 class="titulo" style="font-size:2rem;margin-top:10px">Uma jóia por medida, <em>a partir da sua opala</em></h3>
+            <p>Tenho sempre uma pequena seleção de opalas favo de mel por engastar. Escreva para <strong>ola@jusante.pt</strong>: envio-lhe fotografias e vídeos das pedras disponíveis e desenhamos juntas a peça. Cada opala segue com ficha da pedra (origem, peso, medidas, padrão e tratamento) e certificado de autenticidade assinado.</p>
+          </div>
+        </div>
+      </section>`;
   }
 
   function blocoColecoes() {
@@ -251,7 +331,7 @@
   }
 
   function paginaLoja(filtro) {
-    const tipos = ["Todas", ...new Set(P.map((p) => p.tipo))];
+    const tipos = ["Todas", ...new Set(P.map((p) => p.tipo)), "Opala"];
     const f = filtro || "Todas";
     const lista = f === "Todas" ? P : P.filter((p) => p.tipo === f || p.colecao === f);
     return `<section class="loja-cab">
@@ -300,20 +380,24 @@
           <div class="galeria-principal">${slot(h, { idx: fotoAtiva, hover: false, rotulo: p.titulo, modo: fotos[fotoAtiva] && cache[h]?.length ? "substituir" : "adicionar" })}</div>
         </div>
         <div class="produto-info">
-          <div class="migalhas"><a href="#/loja">Loja</a> / <a href="#/colecao/${encodeURIComponent(p.colecao)}">${p.colecao}</a> / ${p.tipo}</div>
+          <div class="migalhas"><a href="#/loja">Loja</a> / ${p.especialidade ? `<a href="#/opala">Opala favo de mel</a>` : `<a href="#/colecao/${encodeURIComponent(p.colecao)}">${p.colecao}</a>`} / ${p.tipo}</div>
           <h1>${esc(p.titulo)}</h1>
           <div class="produto-preco">${eur(p.preco)}</div>
           <div class="edicao-caixa">
             <div class="linha1"><span class="rotulo" style="font-size:.66rem">${tiragemTxt(p)}</span>${pontos(p)}</div>
-            <small>${p.disponiveis ? `Receberá o exemplar <strong>n.º ${numero}/${p.edicao}</strong>, gravado e acompanhado de certificado assinado.` : `Todos os ${p.edicao} exemplares encontraram dona. Inscreva-se para saber da próxima tiragem.`}</small>
+            <small>${p.edicao === 1 ? (p.disponiveis ? `Esta pedra é única, e a jóia foi desenhada só para ela: não há segunda edição. Segue com ficha da pedra e certificado assinado.` : `Esta peça única já encontrou dona. Pergunte-nos pelas opalas por engastar.`) : p.disponiveis ? `Receberá o exemplar <strong>n.º ${numero}/${p.edicao}</strong>, gravado e acompanhado de certificado assinado.` : `Todos os ${p.edicao} exemplares encontraram dona. Inscreva-se para saber da próxima tiragem.`}</small>
           </div>
           <p class="produto-desc">${esc(p.descricao)}</p>
           ${tams}
           ${p.disponiveis
             ? `<button class="btn btn-cheio" data-acao="adicionar" data-handle="${p.handle}">Adicionar ao saco</button>`
             : `<a class="btn btn-cheio" href="#/" data-acao="lista-espera" style="text-align:center">Entrar na lista de espera</a>`}
+          ${p.pedra ? `<div class="ficha-pedra"><span class="rotulo" style="font-size:.66rem">Ficha da pedra</span><dl>
+            <dt>Pedra</dt><dd>Opala preciosa etíope</dd><dt>Origem</dt><dd>${esc(p.pedra.origem)}</dd><dt>Padrão</dt><dd>${esc(p.pedra.padrao)}</dd>
+            <dt>Peso</dt><dd>${esc(p.pedra.peso)}</dd><dt>Corte</dt><dd>${esc(p.pedra.corte)}</dd><dt>Medidas</dt><dd>${esc(p.pedra.medidas)}</dd><dt>Tratamento</dt><dd>${esc(p.pedra.tratamento)}</dd></dl>
+            <a href="#/opala" class="ficha-link">Cuidados com a opala →</a></div>` : ""}
           <ul class="detalhes">${p.detalhes.map((d) => `<li>${esc(d)}</li>`).join("")}<li>${esc(p.material)}</li></ul>
-          <div class="garantias"><span>✦ Feito à mão no Alto Minho</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span></div>
+          <div class="garantias"><span>✦ Feito à mão no Alto Minho</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.pedra ? `<span>✦ Ficha gemológica da pedra</span>` : ""}</div>
         </div>
       </section>
     </div>
@@ -338,6 +422,7 @@
     else if (r === "colecao") html = paginaColecoes(arg);
     else if (r === "p") html = paginaProduto(arg);
     else if (r === "atelier") html = paginaAtelier();
+    else if (r === "opala") html = paginaOpala();
     else html = paginaInicio();
     const y = scrollY;
     app.innerHTML = html;

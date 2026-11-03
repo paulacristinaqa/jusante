@@ -39,6 +39,14 @@ Sugestão para o Shopify: imagens quadradas de 2048 × 2048 px, em JPG ou WebP, 
 
 Tudo está em `js/produtos.js`: título, preço, material, coleção, descrição, detalhes, tamanhos e tiragem (`edicao` = total de exemplares, `disponiveis` = quantos restam). Os pontos dourados, os selos "Última peça" e "Esgotada" e o número do exemplar ("n.º 4/5") são calculados a partir destes dois valores.
 
+## Especialidade: Opala Favo de Mel da Etiópia
+
+Secção própria em `#/opala`, com um bloco de destaque na página inicial e um filtro "Opala" na loja.
+
+- As peças de opala estão no fim de `js/produtos.js`, com `especialidade: "opala"` e `edicao: 1` (peças únicas).
+- O campo `pedra` (origem, padrão, peso, corte, medidas, tratamento) aparece como **Ficha da pedra** na página de produto.
+- A imagem do destaque na página inicial testa-se no Modo fotos, como as restantes.
+
 ## Publicar no GitHub Pages
 
 ```bash
@@ -50,7 +58,7 @@ git remote add origin https://github.com/O-SEU-UTILIZADOR/jusante-loja.git
 git push -u origin main
 ```
 
-Depois, no GitHub: **Settings → Pages → Deploy from a branch → main / (root)**.
+O repositório já tem uma publicação automática (`.github/workflows/pages.yml`): cada alteração em `main` atualiza o site em cerca de um minuto, em https://paulacristinaqa.github.io/jusante/
 
 Atenção: no plano gratuito, o GitHub Pages só publica a partir de repositórios **públicos**. Se o repositório for privado, o site só fica online com um plano pago. Para acesso só seu, a alternativa é abrir a loja localmente.
 
