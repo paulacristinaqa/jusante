@@ -88,17 +88,7 @@
     if (cache[chave]?.length) return cache[chave];
     const p = porHandle(chave);
     if (p?.imagens?.length) return p.imagens.map((url) => ({ url, w: 0, h: 0, ficheiro: true }));
-    const atl = fotoAtlas(chave);
-    if (atl) return [{ url: atl.src, w: 0, h: 0, ficheiro: true }];
     return REF[chave] ? [{ url: REF[chave].url, w: 0, h: 0, ref: true }] : [];
-  }
-  /* fotos do Atlas definidas em js/atlas.js: chave "atlas:<id>:<n>" */
-  const ATLAS = window.JUSANTE_ATLAS || [];
-  function fotoAtlas(chave) {
-    const m = /^atlas:([\w-]+):(\d+)$/.exec(chave);
-    if (!m) return null;
-    const cap = ATLAS.find((c) => c.id === m[1]);
-    return cap?.fotos?.[+m[2] - 1] || null;
   }
 
   /* ---------------- configurações do modo fotos ---------------- */
@@ -396,40 +386,19 @@
   /* Atlas da Jusante: diário de campo (Brand Bible 3.4 e 8.3).
      Regra de rigor: não apresentar "os afluentes" como inventário científico. */
   function paginaAtlas() {
-    const capitulos = ATLAS.map((c, ci) => {
-      const n = Math.max(3, c.fotos?.length || 0);
-      const galeria = Array.from({ length: n }, (_, i) => {
-        const f = c.fotos?.[i];
-        return `<figure class="atlas-foto">${slot(`atlas:${c.id}:${i + 1}`, { rotulo: "Foto das suas andanças", hover: false, formato: i === 0 ? "4/5" : "1/1", modo: "substituir" })}${f?.legenda ? `<figcaption>${esc(f.legenda)}</figcaption>` : ""}</figure>`;
-      }).join("");
-      const paleta = c.paleta.map(([nome, cor]) => `<li><span class="amostra ${cor === "transparente" ? "amostra-translucida" : ""}" style="${cor === "transparente" ? "" : `background:${cor}`}"></span>${esc(nome)}</li>`).join("");
-      return `<section class="atlas-cap ${ci % 2 ? "atlas-cap-inv" : ""}" id="atlas-${c.id}">
-        <div class="envolvente">
-          <div class="atlas-cap-grelha">
-            <div class="atlas-galeria surgir">${galeria}</div>
-            <div class="atlas-cap-texto surgir">
-              <span class="rotulo ouro">Capítulo ${c.capitulo} · ${esc(c.colecao)}</span>
-              <h2 class="titulo" style="margin-top:12px">${esc(c.titulo)}</h2>
-              <p class="atlas-lugar">${esc(c.lugar)}</p>
-              ${c.texto.map((t) => `<p>${esc(t)}</p>`).join("")}
-              <h3 class="atlas-sub">Paleta observada</h3>
-              <ul class="atlas-paleta">${paleta}</ul>
-              <h3 class="atlas-sub">Matéria</h3>
-              <p>${esc(c.materia)}</p>
-              <a class="btn" href="#/colecao/${encodeURIComponent(c.colecao)}" style="margin-top:22px">Ver a coleção ${esc(c.colecao)}</a>
-            </div>
-          </div>
-        </div>
-      </section>`;
-    }).join("");
+    const caps = [1, 2, 3].map((n) => `<article class="capitulo surgir">
+        ${slot("atlas:" + n, { rotulo: "Foto do lugar (sua)", hover: false, formato: "4/5", modo: "substituir" })}
+        <small>Capítulo ${["I", "II", "III"][n - 1]}</small>
+        <h3>Em preparação</h3>
+        <p>Lugar, estação, cores observadas, matérias encontradas e as peças que nasceram daqui.</p>
+      </article>`).join("");
     return `<section class="loja-cab">
         <img class="divisor" src="${SIMBOLO}" alt="">
         <span class="rotulo ouro">Atlas da Jusante</span>
         <h1 class="titulo" style="margin-top:10px">Lugares que <em>inspiram</em></h1>
-        <p>Um diário de campo ao longo do Rio Minho / Miño: da nascente na Galiza à foz atlântica, passando pelo troço onde as duas margens se encontram. Cada capítulo guarda as cores, as matérias e as fotografias das andanças que deram origem a uma coleção.</p>
-        <nav class="atlas-indice" aria-label="Capítulos do Atlas">${ATLAS.map((c) => `<a href="#/atlas" data-ir="atlas-${c.id}">${c.capitulo}. ${esc(c.colecao)}</a>`).join("")}</nav>
+        <p>Um diário de campo ao longo do Rio Minho / Miño: da nascente na Galiza à foz atlântica, passando pelo troço onde as duas margens se encontram.</p>
       </section>
-      <section class="seccao envolvente" style="padding-top:10px">
+      <section class="seccao envolvente" style="padding-top:20px">
         <div class="margens surgir">
           <div class="lado"><span class="rotulo ouro">Margem portuguesa</span><h3>Minho</h3><p>Luz, granito, socalcos e pequenas vilas debruçadas sobre a água.</p></div>
           <div class="fenda" aria-hidden="true"></div>
@@ -437,9 +406,10 @@
         </div>
         <p class="rotulo" style="text-align:center;margin-top:40px;color:var(--cinza)">Duas margens. Uma corrente.</p>
       </section>
-      ${capitulos}
-      <section class="envolvente" style="padding:clamp(40px,6vw,70px) clamp(20px,4vw,56px)">
-        <p class="atlas-nota">Os capítulos do Atlas são uma seleção editorial de lugares que inspiram a Jusante, e não um inventário geográfico completo do rio.</p>
+      <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
+        <div class="seccao-cab"><div><span class="rotulo ouro">Capítulos</span><h2 class="titulo">O <em>diário</em> do rio</h2></div></div>
+        <div class="atlas-capitulos">${caps}</div>
+        <p class="atlas-nota" style="margin-top:40px">Os capítulos do Atlas são uma seleção editorial de lugares e afluentes que inspiram a Jusante, e não um inventário geográfico completo do rio.</p>
       </section>
       ${blocoNewsletter()}`;
   }
@@ -759,8 +729,6 @@
     const op = e.target.closest("[data-leitura]");
     if (op) { alternarLeitura(op.dataset.leitura); return; }
     if (!e.target.closest(".leitura-painel, .leitura-btn")) fecharLeitura();
-    const ir = e.target.closest("[data-ir]");
-    if (ir) { e.preventDefault(); document.getElementById(ir.dataset.ir)?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     const mini = e.target.closest("[data-mini]");
     if (mini) { fotoAtiva = +mini.dataset.mini; render(); return; }
     const tam = e.target.closest("[data-tam]");
