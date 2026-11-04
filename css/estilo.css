@@ -609,3 +609,22 @@ html.alto-contraste .colecao .foto-vazia span,html.alto-contraste .hero-imagem .
 .opala-cuidados .cuidados-lista h3{font-size:1.25rem}
 .produto-cuidados{font-size:.95rem}
 .produto-cuidados a{color:var(--oceano);text-decoration:underline;text-underline-offset:3px}
+
+
+/* ==========  ATLAS: ANDANÇAS  ========== */
+.andancas{padding-top:10px}
+.andancas-intro{color:var(--cinza);margin:-24px 0 30px;font-family:var(--serif);font-style:italic;font-size:1.2rem}
+.andancas-grelha{columns:3 300px;column-gap:16px}
+.andanca{break-inside:avoid;margin:0 0 16px}
+.andanca-abrir{display:block;width:100%;padding:0;cursor:zoom-in}
+.andanca img,.andanca video{display:block;width:100%;height:auto;background:var(--neblina)}
+.andanca-abrir:hover img{opacity:.92}
+.andanca figcaption{font-family:var(--serif);font-style:italic;color:var(--cinza);margin-top:6px}
+.visor{position:fixed;inset:0;z-index:90;background:rgba(6,32,31,.94);display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,60px)}
+.visor.aberto{display:flex}
+.visor figure{max-width:min(1400px,100%);max-height:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+.visor img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain}
+.visor figcaption{color:var(--creme);font-family:var(--serif);font-style:italic;font-size:1.2rem;text-align:center}
+.visor-fechar{position:absolute;top:14px;right:20px;color:var(--creme);font-size:2.6rem;line-height:1;padding:6px 12px}
+.visor-nav{position:absolute;top:50%;transform:translateY(-50%);color:var(--creme);font-size:3rem;line-height:1;padding:10px 16px}
+.visor-nav.ant{left:6px}.visor-nav.seg{right:6px}

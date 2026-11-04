@@ -88,6 +88,7 @@
     if (cache[chave]?.length) return cache[chave];
     const p = porHandle(chave);
     if (p?.imagens?.length) return p.imagens.map((url) => ({ url, w: 0, h: 0, ficheiro: true }));
+    if (chave === "atlas:capa" && window.JUSANTE_ATLAS_CAPA) return [{ url: window.JUSANTE_ATLAS_CAPA, w: 0, h: 0, ficheiro: true }];
     return REF[chave] ? [{ url: REF[chave].url, w: 0, h: 0, ref: true }] : [];
   }
 
@@ -385,6 +386,32 @@
 
   /* Atlas da Jusante: diário de campo (Brand Bible 3.4 e 8.3).
      Regra de rigor: não apresentar "os afluentes" como inventário científico. */
+  /* galeria das andanças (js/andancas.js) */
+  const ANDANCAS = window.JUSANTE_ANDANCAS || [];
+  function blocoAndancas() {
+    if (!ANDANCAS.length) return "";
+    const itens = ANDANCAS.map((f, i) => f.video
+      ? `<figure class="andanca andanca-video"><video src="${f.video}" poster="${f.capa}" controls muted playsinline preload="none" aria-label="${esc(f.alt)}"></video>${f.legenda ? `<figcaption>${esc(f.legenda)}</figcaption>` : ""}</figure>`
+      : `<figure class="andanca"><button class="andanca-abrir" data-ver="${i}" aria-label="Ver em grande: ${esc(f.alt)}"><img src="${f.mini}" alt="${esc(f.alt)}" loading="lazy" width="${f.w}" height="${f.h}"></button>${f.legenda ? `<figcaption>${esc(f.legenda)}</figcaption>` : ""}</figure>`
+    ).join("");
+    return `<section class="seccao envolvente andancas">
+        <div class="seccao-cab"><div><span class="rotulo ouro">Andanças</span><h2 class="titulo">Fotografias <em>do caminho</em></h2></div></div>
+        <p class="andancas-intro">Da névoa da manhã ao poente: o que fui encontrando ao longo do rio.</p>
+        <div class="andancas-grelha">${itens}</div>
+      </section>`;
+  }
+  function verFoto(i) {
+    const f = ANDANCAS[i]; if (!f || f.video) return;
+    let v = document.querySelector(".visor");
+    if (!v) { v = document.createElement("div"); v.className = "visor"; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); document.body.appendChild(v); }
+    v.innerHTML = `<button class="visor-fechar" data-acao="fechar-visor" aria-label="Fechar">×</button>
+      <button class="visor-nav ant" data-ver="${(i - 1 + ANDANCAS.length) % ANDANCAS.length}" aria-label="Anterior">‹</button>
+      <figure><img src="${f.src}" alt="${esc(f.alt)}"><figcaption>${esc(f.legenda || f.alt)}</figcaption></figure>
+      <button class="visor-nav seg" data-ver="${(i + 1) % ANDANCAS.length}" aria-label="Seguinte">›</button>`;
+    v.classList.add("aberto"); v.querySelector(".visor-fechar").focus();
+  }
+  function fecharVisor() { document.querySelector(".visor")?.classList.remove("aberto"); }
+
   function paginaAtlas() {
     const caps = [1, 2, 3].map((n) => `<article class="capitulo surgir">
         ${slot("atlas:" + n, { rotulo: "Foto do lugar (sua)", hover: false, formato: "4/5", modo: "substituir" })}
@@ -406,6 +433,7 @@
         </div>
         <p class="rotulo" style="text-align:center;margin-top:40px;color:var(--cinza)">Duas margens. Uma corrente.</p>
       </section>
+      ${blocoAndancas()}
       <section class="envolvente" style="padding-bottom:clamp(60px,8vw,110px)">
         <div class="seccao-cab"><div><span class="rotulo ouro">Capítulos</span><h2 class="titulo">O <em>diário</em> do rio</h2></div></div>
         <div class="atlas-capitulos">${caps}</div>
@@ -729,6 +757,13 @@
     const op = e.target.closest("[data-leitura]");
     if (op) { alternarLeitura(op.dataset.leitura); return; }
     if (!e.target.closest(".leitura-painel, .leitura-btn")) fecharLeitura();
+    const ver = e.target.closest("[data-ver]");
+    if (ver) {
+      let i = +ver.dataset.ver;
+      while (ANDANCAS[i]?.video) i = ver.classList.contains("ant") ? (i - 1 + ANDANCAS.length) % ANDANCAS.length : (i + 1) % ANDANCAS.length;
+      verFoto(i); return;
+    }
+    if (e.target.closest('[data-acao="fechar-visor"]') || e.target.classList.contains("visor")) { fecharVisor(); return; }
     const mini = e.target.closest("[data-mini]");
     if (mini) { fotoAtiva = +mini.dataset.mini; render(); return; }
     const tam = e.target.closest("[data-tam]");
@@ -806,7 +841,8 @@
   addEventListener("scroll", () => document.querySelector(".topo").classList.toggle("compacto", scrollY > 60), { passive: true });
   addEventListener("hashchange", render);
   addEventListener("keydown", (e) => {
-    if (e.key === "Escape") { document.body.classList.remove("saco-aberto"); fecharLeitura(); }
+    if (e.key === "Escape") { document.body.classList.remove("saco-aberto"); fecharLeitura(); fecharVisor(); }
+    if (document.querySelector(".visor.aberto") && (e.key === "ArrowRight" || e.key === "ArrowLeft")) document.querySelector(e.key === "ArrowRight" ? ".visor-nav.seg" : ".visor-nav.ant")?.click();
     if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-mini]")) { e.preventDefault(); e.target.click(); }
   });
 
