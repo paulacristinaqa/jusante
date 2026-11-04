@@ -1,0 +1,2 @@
+Fotos das andancas para o Atlas da Jusante.
+Indique-as em js/atlas.js, no campo "fotos" de cada capitulo.
