@@ -591,3 +591,21 @@ html.alto-contraste .colecao .foto-vazia span,html.alto-contraste .hero-imagem .
   .cert{border-color:#999;width:100%;box-shadow:none}
   .surgir{opacity:1!important;transform:none!important}
 }
+
+
+/* ==========  CUIDADOS  ========== */
+.linguas{display:inline-flex;margin:22px auto 4px;border:1px solid var(--oceano)}
+.linguas a{padding:9px 18px;font-size:.95rem;color:var(--oceano)}
+.linguas a.ativo{background:var(--oceano);color:var(--creme)}
+.cuidados-corpo{max-width:860px;padding-bottom:clamp(60px,8vw,110px)}
+.cuidados-lista{list-style:none;display:flex;flex-direction:column}
+.cuidados-lista li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--linha)}
+.cuidados-lista li:last-child{border-bottom:1px solid var(--linha)}
+.cuidados-n{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--ouro-escuro);line-height:1.1}
+.cuidados-lista h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:6px}
+.cuidados-lista p{color:var(--cinza);font-size:1.02rem;line-height:1.7}
+.cuidados-fecho{margin-top:28px;color:var(--cinza)}
+.opala-cuidados .cuidados-lista li{grid-template-columns:44px 1fr;padding:16px 0}
+.opala-cuidados .cuidados-lista h3{font-size:1.25rem}
+.produto-cuidados{font-size:.95rem}
+.produto-cuidados a{color:var(--oceano);text-decoration:underline;text-underline-offset:3px}

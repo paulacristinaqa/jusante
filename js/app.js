@@ -310,16 +310,11 @@
         <div class="envolvente opala-cuidados-grelha">
           <div>
             <span class="rotulo ouro">Cuidados</span>
-            <h2 class="titulo" style="margin-top:12px">Como cuidar <em>da sua peça</em></h2>
-            <p>A cerâmica plástica é leve e resistente, mas o acabamento que imita a opala merece alguns cuidados para manter o brilho.</p>
+            <h2 class="titulo" style="margin-top:12px">${CUIDADOS.pt.titulo}</h2>
+            <p>As réplicas de opala são da mesma cerâmica plástica das outras peças, por isso pedem os mesmos cuidados.</p>
+            <p style="margin-top:18px"><a class="btn" href="#/cuidados">Ver em página própria</a> <a class="btn" href="#/cuidados/es" lang="es" style="border-color:transparent">En español →</a></p>
           </div>
-          <ul class="detalhes">
-            <li>Tire a joia antes de tomar banho, nadar ou fazer desporto.</li>
-            <li>Evite perfumes, álcool, acetona e produtos de limpeza: podem tirar o brilho ao acabamento.</li>
-            <li>Não deixe a peça ao sol forte nem junto de fontes de calor, como o tablier do carro.</li>
-            <li>Limpe só com um pano macio, seco ou ligeiramente húmido.</li>
-            <li>Guarde-a na bolsa de linho, separada de outras joias, para não riscar.</li>
-          </ul>
+          ${listaCuidados(CUIDADOS.pt)}
         </div>
       </section>
 
@@ -489,13 +484,69 @@
             <dt>Material</dt><dd>Réplica em cerâmica plástica, modelada à mão</dd><dt>Inspiração</dt><dd>Opala favo de mel de Welo, Etiópia</dd><dt>Padrão</dt><dd>${esc(p.efeito.padrao)}</dd>
             <dt>Tons</dt><dd>${esc(p.efeito.tons)}</dd><dt>Forma</dt><dd>${esc(p.efeito.forma)}</dd><dt>Medidas</dt><dd>${esc(p.efeito.medidas)}</dd></dl>
             <p class="ficha-nota">Réplica: esta peça não contém opala natural.</p>
-            <a href="#/opala" class="ficha-link">Cuidados com a peça →</a></div>` : ""}
+            </div>` : ""}
           <ul class="detalhes">${p.detalhes.map((d) => `<li>${esc(d)}</li>`).join("")}<li>${esc(p.material)}</li></ul>
+          <p class="produto-cuidados"><a href="#/cuidados">Cuidados com a peça</a> · <a href="#/cuidados/es" lang="es">Cuidados (español)</a></p>
           <div class="garantias"><span>✦ Esculpida à mão livre</span><span>✦ Certificado de autenticidade</span><span>✦ Envio gratuito em Portugal</span><span>✦ Embalagem em linho natural</span>${p.efeito ? `<span>✦ Réplica de opala feita à mão</span>` : ""}</div>
         </div>
       </section>
     </div>
     ${rel.length ? `<section class="relacionados envolvente"><div class="seccao-cab"><h2 class="titulo" style="font-size:2rem">Do mesmo <em>troço do rio</em></h2></div><div class="grelha">${rel.map(cartao).join("")}</div></section>` : ""}`;
+  }
+
+  /* ---------------- cuidados com as peças (PT / ES) ---------------- */
+  const CUIDADOS = {
+    pt: {
+      lingua: "Português",
+      rotulo: "Cuidados",
+      titulo: "Como cuidar <em>da sua peça</em>",
+      intro: "Cada peça Jusante é esculpida à mão em cerâmica plástica. É leve e resistente, mas guarda a delicadeza do gesto que a criou. Com alguns cuidados simples, acompanha-a durante muitos anos.",
+      itens: [
+        ["Longe da água", "Tire a peça antes do banho, de nadar ou de lavar as mãos: a água, com o tempo, pode desgastar o acabamento e os componentes metálicos. Ponha o perfume, a laca ou o creme primeiro, deixe secar, e só depois a joia."],
+        ["Sem dobrar", "A cerâmica plástica tem uma ligeira flexibilidade, mas não foi feita para dobrar. Forçá-la é a forma mais fácil de a partir."],
+        ["Momentos de pausa", "Deixe a peça descansar quando for dormir, tomar duche, fazer desporto ou qualquer atividade em que possa bater, prender-se ou cair."],
+        ["Um lugar só seu", "Guarde-a na bolsa de linho ou numa caixa, separada das outras joias, onde não fique apertada, não caia, não risque nem apanhe pó. Longe do sol direto e de fontes de calor."],
+        ["Limpeza suave", "Se precisar de a limpar, use um pano macio, ligeiramente humedecido só com água, e passe com delicadeza, sem fazer força. Nunca use acetona, álcool nem produtos de limpeza agressivos."]
+      ],
+      fecho: "Alguma dúvida sobre a sua peça? Escreva para ola@jusante.pt."
+    },
+    es: {
+      lingua: "Español",
+      rotulo: "Cuidados",
+      titulo: "Cómo cuidar <em>su pieza</em>",
+      intro: "Cada pieza Jusante está esculpida a mano en arcilla polimérica. Es ligera y resistente, pero conserva la delicadeza del gesto que la creó. Con unos cuidados sencillos, le acompañará durante muchos años.",
+      itens: [
+        ["Lejos del agua", "Quítese la pieza antes de ducharse, nadar o lavarse las manos: con el tiempo, el agua puede desgastar el acabado y los componentes metálicos. Aplique primero el perfume, la laca o la crema, deje que se sequen, y póngase la joya después."],
+        ["Sin doblar", "La arcilla polimérica tiene una ligera flexibilidad, pero no está hecha para doblarse. Forzarla es la manera más fácil de que se rompa."],
+        ["Momentos de pausa", "Deje descansar la pieza para dormir, ducharse, hacer deporte o cualquier actividad en la que pueda golpearse, engancharse o caerse."],
+        ["Un lugar propio", "Guárdela en la bolsita de lino o en una caja, separada de otras joyas, donde no quede apretada, no se caiga, no se raye ni coja polvo. Lejos del sol directo y de fuentes de calor."],
+        ["Limpieza suave", "Si necesita limpiarla, use un paño suave, ligeramente humedecido solo con agua, y páselo con delicadeza, sin apretar. No utilice nunca acetona, alcohol ni productos de limpieza agresivos."]
+      ],
+      fecho: "¿Alguna duda sobre su pieza? Escriba a ola@jusante.pt."
+    }
+  };
+
+  function listaCuidados(t) {
+    return `<ol class="cuidados-lista">${t.itens.map(([h, d], i) => `<li><span class="cuidados-n" aria-hidden="true">${["i", "ii", "iii", "iv", "v"][i]}.</span><div><h3>${h}</h3><p>${d}</p></div></li>`).join("")}</ol>`;
+  }
+
+  function paginaCuidados(lang) {
+    const l = lang === "es" ? "es" : "pt";
+    const t = CUIDADOS[l];
+    return `<section class="loja-cab" lang="${l}">
+        <img class="divisor" src="${SIMBOLO}" alt="">
+        <span class="rotulo ouro">${t.rotulo}</span>
+        <h1 class="titulo" style="margin-top:10px">${t.titulo}</h1>
+        <div class="linguas" role="group" aria-label="Língua / Idioma">
+          <a href="#/cuidados" class="${l === "pt" ? "ativo" : ""}" aria-current="${l === "pt" ? "page" : "false"}" lang="pt">Português</a>
+          <a href="#/cuidados/es" class="${l === "es" ? "ativo" : ""}" aria-current="${l === "es" ? "page" : "false"}" lang="es">Español</a>
+        </div>
+        <p>${t.intro}</p>
+      </section>
+      <section class="envolvente cuidados-corpo" lang="${l}">
+        ${listaCuidados(t)}
+        <p class="cuidados-fecho">${t.fecho}</p>
+      </section>`;
   }
 
   /* ---------------- certificado e verificação online ----------------
@@ -593,6 +644,7 @@
     else if (r === "atlas") html = paginaAtlas();
     else if (r === "certificado") html = paginaCertificado(arg);
     else if (r === "verificar") html = paginaVerificar();
+    else if (r === "cuidados") html = paginaCuidados(arg);
     else html = paginaInicio();
     const y = scrollY;
     app.innerHTML = html;
